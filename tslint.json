@@ -1,0 +1,13 @@
+{
+    "extends": "tslint-microsoft-contrib",
+    "rules":{
+        "no-relative-imports": { "severity": "off" },
+        "no-console": { "severity": "off" },
+        "export-name": { "severity": "off" },
+        "newline-before-return": { "severity": "off" },
+        "curly": [true, "ignore-same-line"],
+        "align": { "severity": "off"},
+        "no-reserved-keywords": { "severity": "off"},
+        "no-suspicious-comment": { "severity": "off"}
+    }
+}
