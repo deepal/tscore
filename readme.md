@@ -1,6 +1,9 @@
 # TSCORE
 
-[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) [![status](https://img.shields.io/badge/status-development_pending-brightgreen.svg?style=flat-square)]()
+![](https://img.shields.io/npm/v/@dpjayasekara/tscore.svg?colorB=brightgreen&style=flat-square)
+![](https://img.shields.io/david/dpjayasekara/tscore.svg?style=flat-square)
+![](https://img.shields.io/npm/dm/@dpjayasekara/tscore.svg?style=flat-square)
+[![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) 
 
 A typescript based application bootstrapper for NodeJS/Express.js based REST APIs.
 
@@ -14,34 +17,42 @@ npm i @dpjayasekara/tscore
 
 ### Module
 
+The following is an example for a tscore module.
 ```js
-import {TSModule} from '@dpjayasekara/tscore'
+export default class ModuleA {
+    private container : Container;
+    private logger : Logger;
+    private config : IConfigObj;
 
-class MyModule extends TSModule {
-    constructor() {
-
+    constructor(container: Container, logger: Logger, config: IConfigObj) {
+        this.container = container;
+        this.logger = logger;
+        this.config = config;
     }
 
-    public init() : void {
-
-    }
-
-    public myCustomFunction(...params : any[]) : any{
-
+    public printSomethingAboutA() {
+        this.logger.info(`Hi, I'm from moduleA`);
     }
 }
+
 ```
 
 ### Launcher
 ```js
-import {launcher} from '@dpjayasekara/tscore'
+import {Launcher} from '@dpjayasekara/tscore';
+
+const launcher = new Launcher();
 
 launcher
-    .withConfig()
-    .module('module1', './module1/path/to/index.js')
-    .module('module2', './module2/path/to/index.js')
-    .module('module3', './module3/path/to/index.js')
-    .main('api', './api/path/to/index.js')
+    .onBaseDir(__dirname)
+    .withConfig('./config.json')
+    .withLoggerConfig({
+        name: 'myapp',
+        level: 'debug'
+    })
+    .module({ name: 'a', path: './moduleA.ts'})
+    .module({ name: 'b', path: './moduleB.ts'})
+    .module({ name: 'main', path: './main.ts'})
     .start();
 ```
 
@@ -52,14 +63,3 @@ Syntax:
 ```js
 tscore.module(moduleName, modulePath)
 ```
-
-#### tscore.main
-
-Initializes the main module. Once all the modules except the main module are loaded successfully, `tscore` will emit `START` event which can be listened to by the main module in order to launch the service. Usually, the `main` module should be used to start the server.
-
-Syntax:
-```js
-tscore.main(moduleName, modulePath)
-```
-
-#### tscore.start
