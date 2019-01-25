@@ -1,8 +1,8 @@
-interface IConfigLoaderBase {
-    getConfig() : object;
-    loadConfig() : Promise<object>;
+export interface IConfigObj {
+    [key: string]: (string|number|boolean|IConfigObj);
 }
 
-interface ILocalConfigLoader extends IConfigLoaderBase {
-    configFilePath : string;
+export interface IConfigLoader {
+    loadConfig() : IConfigObj;
+    loadConfigAsync() : Promise<void>;
 }

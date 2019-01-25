@@ -3,6 +3,6 @@ import {IModule} from '../module/types';
 
 export interface IContainer {
     logger(): ILogger;
-    config(): object;
+    config(module: string): (object | undefined);
     module(moduleName: string): IModule;
 }

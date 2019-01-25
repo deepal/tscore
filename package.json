@@ -31,11 +31,13 @@
   "author": "Deepal Jayasekara",
   "license": "ISC",
   "dependencies": {
+    "@types/app-root-path": "^1.2.4",
     "@types/bunyan": "^1.8.5",
     "@types/express": "^4.16.0",
     "@types/helmet": "0.0.42",
     "@types/mocha": "5.2.5",
     "@types/node": "10.12.18",
+    "app-root-path": "^2.1.0",
     "body-parser": "1.18.3",
     "bunyan": "^1.8.12",
     "codecov": "3.1.0",
