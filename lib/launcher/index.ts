@@ -4,10 +4,25 @@ import { IApplicationConfig, IModuleDescription } from './types';
 
 export class Launcher {
     private container : Container;
-    private applicationConfig : IApplicationConfig;
+    private applicationConfig : IApplicationConfig = {
+        name: '',
+        baseDir: '',
+        configPath: '',
+        loggerConfig: {
+            level: 'trace',
+            name: ''
+        },
+        moduleDescription: [],
+        mainModuleDescription: { name: '', path: ''}
+    };
 
     constructor() {
         this.container = new Container();
+    }
+
+    public onBaseDir(baseDir: string) : Launcher {
+        this.applicationConfig.baseDir = baseDir;
+        return this;
     }
 
     public withConfig(configPath: string) : Launcher {
@@ -15,7 +30,7 @@ export class Launcher {
         return this;
     }
 
-    public logger(loggerConfig: ILoggerConfig) : Launcher {
+    public withLoggerConfig(loggerConfig: ILoggerConfig) : Launcher {
         this.applicationConfig.loggerConfig = loggerConfig;
         return this;
     }

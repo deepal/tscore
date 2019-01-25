@@ -12,7 +12,7 @@ export class ConfigLoader implements IConfigLoader {
 
     public loadConfig() : IConfigObj {
         return JSON.parse(
-            readFileSync(resolve(this.configPath))
+            readFileSync(this.configPath)
             .toString()
         );
     }

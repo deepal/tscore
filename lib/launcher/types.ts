@@ -7,6 +7,7 @@ export interface IModuleDescription {
 
 export interface IApplicationConfig {
     name: string;
+    baseDir: string;
     configPath: string;
     moduleDescription: IModuleDescription[];
     mainModuleDescription: IModuleDescription;

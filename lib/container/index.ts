@@ -1,4 +1,5 @@
-import {resolve} from 'app-root-path';
+import {EventEmitter} from 'events';
+import {join} from 'path';
 import { ConfigLoader } from '../configLoader';
 import { IConfigObj } from '../configLoader/types';
 import { IApplicationConfig, IModuleDescription } from '../launcher/types';
@@ -7,16 +8,22 @@ import { ILogger, ILoggerConfig } from '../logger/types';
 import { IModule } from '../module/types';
 import { IContainer } from './types';
 
-export class Container implements IContainer {
+const START_EVENT : string = 'APPLICATION:START';
+
+export class Container extends EventEmitter implements IContainer {
     private modules : Map<string, IModule> = new Map<string, IModule>();
     private loggerObj : ILogger;
     private configObj : IConfigObj;
+    private baseDir : string;
 
     public init(applicationConfig : IApplicationConfig) : void {
-        this
-        .loadConfig(applicationConfig.configPath)
-        .initializeLogger(applicationConfig.loggerConfig);
+        this.baseDir = applicationConfig.baseDir;
 
+        this
+            .loadConfig(applicationConfig.configPath)
+            .initializeLogger(applicationConfig.loggerConfig);
+
+        // inject depending modules
         for (const module of applicationConfig.moduleDescription) {
             this.injectModule(
                 module.name,
@@ -24,11 +31,8 @@ export class Container implements IContainer {
             );
         }
 
-        // inject main module
-        this.injectModule(
-            applicationConfig.mainModuleDescription.name,
-            applicationConfig.mainModuleDescription.path
-        );
+        // this event is supposed to be listened by the main module to start the main script
+        this.emit(START_EVENT);
     }
 
     public logger() : ILogger {
@@ -55,7 +59,7 @@ export class Container implements IContainer {
     private injectModule(name : string, modulePath : string) : Container {
         try {
             // todo: moduleClass should be of type IModule. Find out why it does not work!!!
-            const moduleClass : any = require(resolve(modulePath))      // tslint:disable-line
+            const moduleClass : any = require(join(this.baseDir, modulePath)).default      // tslint:disable-line
             const moduleConfig : (IConfigObj|undefined) = <IConfigObj|undefined>this.configObj[name];
             const moduleInstance : IModule = new moduleClass(this, this.logger(), moduleConfig);
 
@@ -71,7 +75,7 @@ export class Container implements IContainer {
     }
 
     private loadConfig(configPath: string) : Container {
-        const configLoader : ConfigLoader = new ConfigLoader(configPath);
+        const configLoader : ConfigLoader = new ConfigLoader(join(this.baseDir, configPath));
         this.configObj = configLoader.loadConfig();
         return this;
     }

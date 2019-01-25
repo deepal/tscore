@@ -1,4 +1,5 @@
-import { IConfigObj, IContainer } from '../container/types';
+import { IConfigObj } from '../configLoader/types';
+import { IContainer } from '../container/types';
 import { ILogger } from '../logger/types';
 import { IModule } from './types';
 

@@ -2,7 +2,7 @@
   "name": "@dpjayasekara/tscore",
   "version": "0.0.1",
   "description": "TypeScript based Application bootstrapper for NodeJS based REST APIs  ",
-  "main": "dist/index.js",
+  "main": "lib/launcher/index.ts",
   "scripts": {
     "build": "tsc",
     "dev": "node --require ts-node/register ./lib/index.ts",
@@ -37,7 +37,6 @@
     "@types/helmet": "0.0.42",
     "@types/mocha": "5.2.5",
     "@types/node": "10.12.18",
-    "app-root-path": "^2.1.0",
     "body-parser": "1.18.3",
     "bunyan": "^1.8.12",
     "codecov": "3.1.0",
