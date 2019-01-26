@@ -58,10 +58,9 @@ export class Container extends EventEmitter implements IContainer {
 
     private injectModule(name : string, modulePath : string) : Container {
         try {
-            // todo: moduleClass should be of type IModule. Find out why it does not work!!!
-            const moduleClass : any = require(join(this.baseDir, modulePath)).default      // tslint:disable-line
+            const moduleClass = require(join(this.baseDir, modulePath)).default      // tslint:disable-line
             const moduleConfig : (IConfigObj|undefined) = <IConfigObj|undefined>this.configObj[name];
-            const moduleInstance : IModule = new moduleClass(this, this.logger(), moduleConfig);
+            const moduleInstance : (typeof moduleClass) = new moduleClass(this, this.logger(), moduleConfig);
 
             if (this.modules.has(name)) {
                 throw new Error(`failed to load module '${name}'. a module with the same name is already loaded`);
