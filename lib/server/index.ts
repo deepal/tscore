@@ -6,15 +6,30 @@ import * as http from 'http';
 import * as https from 'https';
 import {v4 as uuidV4} from 'uuid';
 
-import {
-    IHTTPSConfig,
-    IListnerConfig,
-    IMiddleware,
-    IRouteConfig,
-    IServerConfig
-} from './types';
-
 const DEFAULT_HOST : string = '0.0.0.0';
+
+export interface IHTTPSConfig {
+    key: string;
+    cert: string;
+}
+
+export interface IListnerConfig {
+    host?: string;
+    port: number;
+    secure?: boolean;
+}
+
+export type IMiddleware = (req: express.Request, res: express.Response, next?: Function) => void;
+
+export interface IServerConfig extends IListnerConfig {
+    httpsConfig? : IHTTPSConfig;
+}
+
+export interface IRouteConfig {
+    method: string;
+    path: string;
+    handler: IMiddleware;
+}
 
 export class Server {
 
