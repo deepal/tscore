@@ -1,6 +1,6 @@
 {
   "name": "@dpjayasekara/tscore",
-  "version": "0.2.1",
+  "version": "0.2.2",
   "description": "TypeScript based Application bootstrapper for NodeJS based REST APIs  ",
   "main": "dist/index.js",
   "types": "dist/index.d.ts",
