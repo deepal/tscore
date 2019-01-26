@@ -1,11 +1,12 @@
 import * as bodyParser from 'body-parser';
 import { EventEmitter } from 'events';
-import express from 'express';
+import express, { Request, Response } from 'express';
 import {readFileSync} from 'fs';
 import * as helmet from 'helmet';
 import * as http from 'http';
 import * as https from 'https';
 import {v4 as uuidV4} from 'uuid';
+import {basicAuthParser} from '../security';
 
 const DEFAULT_HOST : string = '0.0.0.0';
 
@@ -55,7 +56,8 @@ export class Server extends EventEmitter {
             .use(helmet.noCache())
             .use(helmet.frameguard())
             .use(helmet.xssFilter())
-            .use(helmet.hidePoweredBy({ setTo: <string>this.app.locals.appId }));
+            .use(helmet.hidePoweredBy({ setTo: <string>this.app.locals.appId }))
+            .use(this.parseBasicAuthHeader);
     }
 
     public getServerConfig() : IServerConfig {
@@ -106,6 +108,19 @@ export class Server extends EventEmitter {
     public middleware(middlewareFn : IMiddleware) : Server {
         this.app.use(middlewareFn);
         return this;
+    }
+
+    private parseBasicAuthHeader(req: Request, res: Response, next: Function) : void {
+        const authHeader: (string|undefined) = req.headers.authorization;
+        try {
+            res.locals.auth = {
+                header: authHeader,
+                ...basicAuthParser(authHeader)
+            };
+            next();
+        } catch (err) {
+            next();
+        }
     }
 
     private registerRoute(routeConfig: IRouteConfig) : Server {
