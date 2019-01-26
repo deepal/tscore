@@ -108,6 +108,7 @@ export class Server extends EventEmitter {
     private registerRoute(routeConfig: IRouteConfig) : Server {
         const {method, path, handler} = routeConfig;
         let applicationListener : express.IRouterMatcher<express.Application> = this.app.get;
+
         switch (method) {
             case 'post':
                 applicationListener = this.app.post; break;
