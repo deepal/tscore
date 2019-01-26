@@ -1,4 +1,5 @@
 import {IConfigObj as Configuration} from './configLoader';
+import * as Constants from './constants';
 import {Container} from './container';
 import {
     IApplicationConfig as ApplicationConfig,
@@ -18,5 +19,6 @@ export {
     Logger,
     Server,
     Launcher,
-    Configuration
+    Configuration,
+    Constants
 };

@@ -1,6 +1,7 @@
 import {EventEmitter} from 'events';
 import {join} from 'path';
 import {ConfigLoader, IConfigObj} from '../configLoader';
+import * as Constants from '../constants';
 import {IApplicationConfig} from '../launcher';
 import {ILogger, ILoggerConfig, Logger} from '../logger';
 import {IModule} from '../module';
@@ -15,6 +16,7 @@ export interface IContainer {
 
 export class Container extends EventEmitter implements IContainer {
     private modules : Map<string, IModule> = new Map<string, IModule>();
+    private store : Map<string, Object|Function>  = new Map<string, Object|Function>();
     private loggerObj : ILogger;
     private configObj : IConfigObj;
     private baseDir : string;
@@ -26,7 +28,6 @@ export class Container extends EventEmitter implements IContainer {
             .loadConfig(applicationConfig.configPath)
             .initializeLogger(applicationConfig.loggerConfig);
 
-        // inject depending modules
         for (const module of applicationConfig.moduleDescription) {
             this.injectModule(
                 module.name,
@@ -34,8 +35,15 @@ export class Container extends EventEmitter implements IContainer {
             );
         }
 
-        // this event is supposed to be listened by the main module to start the main script
-        this.emit(START_EVENT);
+        this.emit(Constants.EVENT.APPLICATION_START);
+    }
+
+    public set(key: string, value: Object|Function) : void {
+        this.store.set(key, value);
+    }
+
+    public get(key: string) : Object|Function|undefined {
+        return this.store.get(key);
     }
 
     public logger() : ILogger {
