@@ -71,6 +71,10 @@ export class Server {
                 applicationListener = this.app.put; break;
             case 'delete':
                 applicationListener = this.app.delete; break;
+            case 'head':
+                applicationListener = this.app.head; break;
+            case 'patch':
+                applicationListener = this.app.patch; break;
             case 'get':
             default:
                 applicationListener = this.app.get;
