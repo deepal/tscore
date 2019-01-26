@@ -2,7 +2,7 @@
 
 ![](https://img.shields.io/npm/v/@dpjayasekara/tscore.svg?colorB=brightgreen&style=flat-square)
 ![](https://img.shields.io/david/dpjayasekara/tscore.svg?style=flat-square)
-![](https://img.shields.io/npm/dm/@dpjayasekara/tscore.svg?style=flat-square)
+![](https://api.travis-ci.org/dpjayasekara/tscore.svg?branch=master)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) 
 
 A typescript based application bootstrapper for NodeJS/Express.js based REST APIs.
