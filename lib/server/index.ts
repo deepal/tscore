@@ -43,6 +43,9 @@ export class Server extends EventEmitter {
     private serverConfig : IServerConfig;
     private readonly app : express.Application;
 
+    /**
+     * Construct a server instance
+     */
     constructor() {
         super();
 
@@ -60,15 +63,26 @@ export class Server extends EventEmitter {
             .use(this.parseBasicAuthHeader);
     }
 
+    /**
+     * Get server configuration
+     */
     public getServerConfig() : IServerConfig {
         return this.serverConfig;
     }
 
+    /**
+     * Configure SSL/TLS credentials for HTTPS
+     * @param httpsConfig HTTPS configuration
+     */
     public setHTTPSCredentials(httpsConfig: IHTTPSConfig) : Server {
         this.serverConfig.httpsConfig = httpsConfig;
         return this;
     }
 
+    /**
+     * Start the server
+     * @param listenerConfig Server listener configuration
+     */
     public listen(listenerConfig : IListnerConfig) : (http.Server | https.Server) {
         this.serverConfig = { ...listenerConfig, host: DEFAULT_HOST };
         let server : (http.Server | https.Server);
@@ -101,15 +115,29 @@ export class Server extends EventEmitter {
         return this;
     }
 
+    /**
+     * Define a route
+     * @param routeConfig Route configuration
+     */
     public route(routeConfig: IRouteConfig) : Server {
         return this.registerRoute(<IRouteConfig>routeConfig);
     }
 
+    /**
+     * Define a server middleware
+     * @param middlewareFn Middleware function
+     */
     public middleware(middlewareFn : IMiddleware) : Server {
         this.app.use(middlewareFn);
         return this;
     }
 
+    /**
+     * Parse HTTP basic authorization header if exists
+     * @param req HTTP Request object
+     * @param res HTTP Response object
+     * @param next Function to call the next middleware
+     */
     private parseBasicAuthHeader(req: Request, res: Response, next: Function) : void {
         const authHeader: (string|undefined) = req.headers.authorization;
         try {
@@ -123,6 +151,10 @@ export class Server extends EventEmitter {
         }
     }
 
+    /**
+     * Internal function to configure routes
+     * @param routeConfig Route configuration
+     */
     private registerRoute(routeConfig: IRouteConfig) : Server {
         const {method, path, handler} = routeConfig;
         let applicationListener : express.IRouterMatcher<express.Application> = this.app.get;

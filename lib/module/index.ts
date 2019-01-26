@@ -15,6 +15,12 @@ export class Module implements IModule {
     private readonly logger: ILogger;
     private readonly config: IConfigObj;
 
+    /**
+     * Construct a module instance
+     * @param container Container instance
+     * @param logger Logger instance
+     * @param config Config object
+     */
     constructor(container: IContainer, logger: ILogger, config: IConfigObj) {
         this.container = container;
         this.logger = logger;

@@ -24,6 +24,10 @@ export class Container extends EventEmitter implements IContainer {
     private configObj : IConfigObj;
     private baseDir : string;
 
+    /**
+     * Initialize container
+     * @param applicationConfig Application configuration
+     */
     public init(applicationConfig : IApplicationConfig) : void {
         this.baseDir = applicationConfig.baseDir;
 
@@ -41,22 +45,41 @@ export class Container extends EventEmitter implements IContainer {
         this.emit(Constants.EVENT.APPLICATION_START);
     }
 
+    /**
+     * Set container-local variables
+     * @param key Object key
+     * @param value Object value
+     */
     public set(key: string, value: Object|Function) : void {
         this.store.set(key, value);
     }
 
+    /**
+     * Get container-local variable by key
+     * @param key Object key
+     */
     public get(key: string) : Object|Function|undefined {
         return this.store.get(key);
     }
 
+    /**
+     * Return logger instance
+     */
     public logger() : ILogger {
         return this.loggerObj;
     }
 
+    /**
+     * Return config object
+     */
     public config() : (object | undefined) {
         return this.configObj;
     }
 
+    /**
+     * Return loaded module by name
+     * @param moduleName Module name
+     */
     public module(moduleName : string) : IModule {
         if (this.modules.has(moduleName)) {
             return <IModule>this.modules.get(moduleName);
@@ -65,11 +88,20 @@ export class Container extends EventEmitter implements IContainer {
         throw new Error(`no such module as : ${moduleName}`);
     }
 
+    /**
+     * Setup logger
+     * @param loggerConfig Logger configuration
+     */
     private initializeLogger(loggerConfig: ILoggerConfig) : Container {
         this.loggerObj = new Logger(loggerConfig);
         return this;
     }
 
+    /**
+     * Inject module into the container
+     * @param name Module name
+     * @param modulePath Path of module
+     */
     private injectModule(name : string, modulePath : string) : Container {
         try {
             const moduleClass = require(join(this.baseDir, modulePath)).default      // tslint:disable-line
@@ -87,6 +119,10 @@ export class Container extends EventEmitter implements IContainer {
         return this;
     }
 
+    /**
+     * Load local configuration file
+     * @param configPath Local configuration file path
+     */
     private loadConfig(configPath: string) : Container {
         const configLoader : ConfigLoader = new ConfigLoader(join(this.baseDir, configPath));
         this.configObj = configLoader.loadConfig();

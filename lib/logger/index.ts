@@ -30,6 +30,10 @@ export class Logger implements ILogger {
     public error : LogFunction;
     public fatal : LogFunction;
 
+    /**
+     * Construct a logger instance
+     * @param options Logger options
+     */
     constructor(options: ILoggerConfig) {
         const {name, level, filePath} = options;
 
