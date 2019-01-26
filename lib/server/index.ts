@@ -34,10 +34,13 @@ export interface IRouteConfig {
 
 export type IEventListener = (...args: any[]) => void;      //tslint:disable-line
 
+/**
+ * Express.js-based application server
+ */
 export class Server extends EventEmitter {
 
     private serverConfig : IServerConfig;
-    private app : express.Application;
+    private readonly app : express.Application;
 
     constructor() {
         super();
@@ -52,7 +55,7 @@ export class Server extends EventEmitter {
             .use(helmet.noCache())
             .use(helmet.frameguard())
             .use(helmet.xssFilter())
-            .use(helmet.hidePoweredBy({ setTo: this.app.locals.appId }));
+            .use(helmet.hidePoweredBy({ setTo: <string>this.app.locals.appId }));
     }
 
     public getServerConfig() : IServerConfig {
@@ -68,7 +71,7 @@ export class Server extends EventEmitter {
         this.serverConfig = { ...listenerConfig, host: DEFAULT_HOST };
         let server : (http.Server | https.Server);
 
-        if (this.serverConfig.httpsConfig) {
+        if (Boolean(this.serverConfig.httpsConfig)) {
             const {key, cert} = <IHTTPSConfig>this.serverConfig.httpsConfig;
             server = https.createServer({
                 key: readFileSync(key),
@@ -124,7 +127,7 @@ export class Server extends EventEmitter {
             default:
                 applicationListener = this.app.get;
         }
-        applicationListener.bind(this.app)(path, handler);
+        (<Function>(applicationListener.bind(this.app)))(path, handler);
         return this;
     }
 }

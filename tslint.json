@@ -9,5 +9,8 @@
         "align": { "severity": "off"},
         "no-reserved-keywords": { "severity": "off"},
         "no-suspicious-comment": { "severity": "off"}
+    },
+    "linterOptions": {
+        "project":true
     }
 }

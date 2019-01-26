@@ -14,9 +14,12 @@ export interface IContainer {
     module(moduleName: string): IModule;
 }
 
+/**
+ * Internal module for dependency injection
+ */
 export class Container extends EventEmitter implements IContainer {
-    private modules : Map<string, IModule> = new Map<string, IModule>();
-    private store : Map<string, Object|Function>  = new Map<string, Object|Function>();
+    private readonly modules : Map<string, IModule> = new Map<string, IModule>();
+    private readonly store : Map<string, Object|Function>  = new Map<string, Object|Function>();
     private loggerObj : ILogger;
     private configObj : IConfigObj;
     private baseDir : string;

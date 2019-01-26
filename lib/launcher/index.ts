@@ -15,9 +15,12 @@ export interface IApplicationConfig {
     loggerConfig: ILoggerConfig;
 }
 
+/**
+ * Application launcher
+ */
 export class Launcher {
-    private container : Container;
-    private applicationConfig : IApplicationConfig = {
+    private readonly container : Container;
+    private readonly applicationConfig : IApplicationConfig = {
         name: '',
         baseDir: '',
         configPath: '',

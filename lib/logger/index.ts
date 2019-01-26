@@ -18,6 +18,9 @@ export interface ILogger {
     fatal: LogFunction;
 }
 
+/**
+ * Logging module
+ */
 export class Logger implements ILogger {
 
     public trace : LogFunction;
@@ -41,7 +44,7 @@ export class Logger implements ILogger {
             }
         ];
 
-        if (!!filePath) {
+        if (Boolean(filePath)) {
             streams.push({
                 path: options.filePath,
                 level: options.level
@@ -59,11 +62,11 @@ export class Logger implements ILogger {
             fatal
         } = logger;
 
-        this.trace = trace.bind(logger);
-        this.debug = debug.bind(logger);
-        this.info = info.bind(logger);
-        this.warn = warn.bind(logger);
-        this.error = error.bind(logger);
-        this.fatal = fatal.bind(logger);
+        this.trace = <LogFunction>trace.bind(logger);
+        this.debug = <LogFunction>debug.bind(logger);
+        this.info = <LogFunction>info.bind(logger);
+        this.warn = <LogFunction>warn.bind(logger);
+        this.error = <LogFunction>error.bind(logger);
+        this.fatal = <LogFunction>fatal.bind(logger);
     }
 }

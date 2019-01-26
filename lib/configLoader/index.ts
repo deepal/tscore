@@ -10,15 +10,18 @@ export interface IConfigLoader {
     loadConfigAsync() : Promise<void>;
 }
 
+/**
+ * Internal module for loading configurations
+ */
 export class ConfigLoader implements IConfigLoader {
-    private configPath : string;
+    private readonly configPath : string;
 
     constructor(configPath : string) {
         this.configPath = configPath;
     }
 
     public loadConfig() : IConfigObj {
-        return JSON.parse(
+        return <IConfigObj>JSON.parse(
             readFileSync(this.configPath)
             .toString()
         );
@@ -26,6 +29,6 @@ export class ConfigLoader implements IConfigLoader {
 
     public async loadConfigAsync() : Promise<void> {
         const readConfig : Function = promisify(readFile);
-        return JSON.parse(await readConfig(this.configPath));
+        return JSON.parse(await readConfig(this.configPath));        // tslint:disable-line
     }
 }

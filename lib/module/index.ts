@@ -6,11 +6,14 @@ export interface IModule {
     init() : void;
 }
 
+/**
+ * Module class
+ */
 export class Module implements IModule {
 
-    private container: IContainer;
-    private logger: ILogger;
-    private config: IConfigObj;
+    private readonly container: IContainer;
+    private readonly logger: ILogger;
+    private readonly config: IConfigObj;
 
     constructor(container: IContainer, logger: ILogger, config: IConfigObj) {
         this.container = container;
