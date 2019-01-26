@@ -1,8 +1,8 @@
 import {EventEmitter} from 'events';
 import {join} from 'path';
-import { ConfigLoader, IConfigObj } from '../configLoader';
-import { IApplicationConfig, IModuleDescription } from '../launcher';
-import { ILogger, ILoggerConfig, Logger  } from '../logger';
+import {ConfigLoader, IConfigObj} from '../configLoader';
+import {IApplicationConfig, IModuleDescription} from '../launcher';
+import {ILogger, ILoggerConfig, Logger} from '../logger';
 import {IModule} from '../module';
 
 const START_EVENT : string = 'APPLICATION:START';
@@ -70,7 +70,7 @@ export class Container extends EventEmitter implements IContainer {
             }
             this.modules.set(name, moduleInstance);
         } catch (err) {
-            throw new Error(`initialization failed. failed to load module : ${name}`);
+            console.error(`initialization failed. failed to load module : ${name}`, err);
         }
 
         return this;
