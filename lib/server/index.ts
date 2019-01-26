@@ -76,7 +76,25 @@ export class Server {
         return server.listen(this.serverConfig.port, this.serverConfig.host);
     }
 
-    public route(routeConfig: IRouteConfig) : Server {
+    /**
+     * Convenient function to register more than one route
+     * @param routeConfig Route configuration
+     */
+    public routes(routeConfig: IRouteConfig[]) : Server {
+        routeConfig.forEach((route : IRouteConfig) => this.registerRoute(route));
+        return this.route(routeConfig);
+    }
+
+    public route(routeConfig: (IRouteConfig | IRouteConfig[])) : Server {
+        return this.registerRoute(<IRouteConfig>routeConfig);
+    }
+
+    public middleware(middlewareFn : IMiddleware) : Server {
+        this.app.use(middlewareFn);
+        return this;
+    }
+
+    private registerRoute(routeConfig: IRouteConfig) : Server {
         const {method, path, handler} = routeConfig;
         let applicationListener : express.IRouterMatcher<express.Application> = this.app.get;
         switch (method) {
@@ -95,11 +113,6 @@ export class Server {
                 applicationListener = this.app.get;
         }
         applicationListener.bind(this.app)(path, handler);
-        return this;
-    }
-
-    public middleware(middlewareFn : IMiddleware) : Server {
-        this.app.use(middlewareFn);
         return this;
     }
 }

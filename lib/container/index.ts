@@ -1,7 +1,7 @@
 import {EventEmitter} from 'events';
 import {join} from 'path';
 import {ConfigLoader, IConfigObj} from '../configLoader';
-import {IApplicationConfig, IModuleDescription} from '../launcher';
+import {IApplicationConfig} from '../launcher';
 import {ILogger, ILoggerConfig, Logger} from '../logger';
 import {IModule} from '../module';
 
