@@ -1,5 +1,4 @@
 import {Request, Response} from 'express';
-import { IncomingMessage, OutgoingMessage } from 'http' ;
 
 export interface IHTTPSConfig {
     key: string;

@@ -1,7 +1,4 @@
 "use strict";
-var __importDefault = (this && this.__importDefault) || function (mod) {
-    return (mod && mod.__esModule) ? mod : { "default": mod };
-};
 var __importStar = (this && this.__importStar) || function (mod) {
     if (mod && mod.__esModule) return mod;
     var result = {};
@@ -9,15 +6,30 @@ var __importStar = (this && this.__importStar) || function (mod) {
     result["default"] = mod;
     return result;
 };
+var __importDefault = (this && this.__importDefault) || function (mod) {
+    return (mod && mod.__esModule) ? mod : { "default": mod };
+};
 Object.defineProperty(exports, "__esModule", { value: true });
+const bodyParser = __importStar(require("body-parser"));
 const express_1 = __importDefault(require("express"));
 const fs_1 = require("fs");
+const helmet = __importStar(require("helmet"));
 const http = __importStar(require("http"));
 const https = __importStar(require("https"));
+const uuid_1 = require("uuid");
 const DEFAULT_HOST = '0.0.0.0';
 class Server {
     constructor() {
         this.app = express_1.default();
+        this.app.locals = {
+            appId: uuid_1.v4()
+        };
+        this.app
+            .use(bodyParser.json())
+            .use(helmet.noCache())
+            .use(helmet.frameguard())
+            .use(helmet.xssFilter())
+            .use(helmet.hidePoweredBy({ setTo: this.app.locals.appId }));
     }
     getServerConfig() {
         return this.serverConfig;

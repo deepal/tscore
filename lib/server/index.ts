@@ -1,8 +1,11 @@
 import * as bodyParser from 'body-parser';
 import express from 'express';
 import {readFileSync} from 'fs';
+import * as helmet from 'helmet';
 import * as http from 'http';
 import * as https from 'https';
+import {v4 as uuidV4} from 'uuid';
+
 import {
     IHTTPSConfig,
     IListnerConfig,
@@ -20,6 +23,16 @@ export class Server {
 
     constructor() {
         this.app = express();
+        this.app.locals = {
+            appId: uuidV4()
+        };
+
+        this.app
+            .use(bodyParser.json())
+            .use(helmet.noCache())
+            .use(helmet.frameguard())
+            .use(helmet.xssFilter())
+            .use(helmet.hidePoweredBy({ setTo: this.app.locals.appId }));
     }
 
     public getServerConfig() : IServerConfig {
