@@ -1,4 +1,3 @@
-import {resolve} from 'app-root-path';
 import {readFile, readFileSync} from 'fs';
 import {promisify} from 'util';
 import { IConfigLoader, IConfigObj } from './types';

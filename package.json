@@ -5,9 +5,6 @@
   "main": "dist/launcher/index.js",
   "scripts": {
     "build": "tsc",
-    "dev": "node --require ts-node/register ./lib/index.ts",
-    "start": "node ./build/index.js",
-    "prod": "npm run build && npm run start",
     "test": "nyc mocha --require ts-node/register test/**/*.ts"
   },
   "nyc": {
@@ -31,25 +28,23 @@
   "author": "Deepal Jayasekara",
   "license": "ISC",
   "dependencies": {
-    "@types/app-root-path": "^1.2.4",
-    "@types/bunyan": "^1.8.5",
-    "@types/express": "^4.16.0",
+    "@types/bunyan": "1.8.5",
+    "@types/express": "4.16.1",
     "@types/helmet": "0.0.42",
     "@types/mocha": "5.2.5",
     "@types/node": "10.12.18",
     "body-parser": "1.18.3",
-    "bunyan": "^1.8.12",
-    "codecov": "3.1.0",
+    "bunyan": "1.8.12",
     "express": "4.16.4",
-    "helmet": "^3.15.0",
-    "mocha": "5.2.0",
-    "nyc": "13.1.0",
-    "should": "13.2.3",
-    "ts-node": "7.0.1",
+    "helmet": "3.15.0",
     "typescript": "3.2.2"
   },
   "devDependencies": {
+    "mocha": "5.2.0",
+    "nyc": "13.1.0",
+    "should": "13.2.3",
     "source-map-support": "0.5.10",
+    "ts-node": "7.0.1",
     "tslint": "5.12.1",
     "tslint-microsoft-contrib": "6.0.0"
   },
