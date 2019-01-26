@@ -1,6 +1,14 @@
 import {readFile, readFileSync} from 'fs';
 import {promisify} from 'util';
-import { IConfigLoader, IConfigObj } from './types';
+
+export interface IConfigObj {
+    [key: string]: (string|number|boolean|IConfigObj);
+}
+
+export interface IConfigLoader {
+    loadConfig() : IConfigObj;
+    loadConfigAsync() : Promise<void>;
+}
 
 export class ConfigLoader implements IConfigLoader {
     private configPath : string;

@@ -1,6 +1,19 @@
 import {Container} from '../container';
-import {ILoggerConfig} from '../logger/types';
-import { IApplicationConfig, IModuleDescription } from './types';
+import {ILoggerConfig} from '../logger';
+
+export interface IModuleDescription {
+    name: string;
+    path: string;
+}
+
+export interface IApplicationConfig {
+    name: string;
+    baseDir: string;
+    configPath: string;
+    moduleDescription: IModuleDescription[];
+    mainModuleDescription: IModuleDescription;
+    loggerConfig: ILoggerConfig;
+}
 
 export class Launcher {
     private container : Container;

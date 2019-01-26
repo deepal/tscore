@@ -1,14 +1,17 @@
 import {EventEmitter} from 'events';
 import {join} from 'path';
-import { ConfigLoader } from '../configLoader';
-import { IConfigObj } from '../configLoader/types';
-import { IApplicationConfig, IModuleDescription } from '../launcher/types';
-import { Logger } from '../logger';
-import { ILogger, ILoggerConfig } from '../logger/types';
-import { IModule } from '../module/types';
-import { IContainer } from './types';
+import { ConfigLoader, IConfigObj } from '../configLoader';
+import { IApplicationConfig, IModuleDescription } from '../launcher';
+import { ILogger, ILoggerConfig, Logger  } from '../logger';
+import {IModule} from '../module';
 
 const START_EVENT : string = 'APPLICATION:START';
+
+export interface IContainer {
+    logger(): ILogger;
+    config(module: string): (object | undefined);
+    module(moduleName: string): IModule;
+}
 
 export class Container extends EventEmitter implements IContainer {
     private modules : Map<string, IModule> = new Map<string, IModule>();

@@ -1,5 +1,22 @@
 import * as bunyan from 'bunyan';
-import { ILogger, ILoggerConfig, LogFunction } from './types';
+import { IncomingMessage, OutgoingMessage } from 'http';
+
+export interface ILoggerConfig {
+    name: string;
+    level: bunyan.LogLevel;
+    filePath?: string;
+}
+
+export type LogFunction = (...message : (string[] | Error[] | IncomingMessage[] | OutgoingMessage[])) => void;
+
+export interface ILogger {
+    trace: LogFunction;
+    debug: LogFunction;
+    info: LogFunction;
+    warn: LogFunction;
+    error: LogFunction;
+    fatal: LogFunction;
+}
 
 export class Logger implements ILogger {
 
