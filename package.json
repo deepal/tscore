@@ -3,6 +3,7 @@
   "version": "0.1.3",
   "description": "TypeScript based Application bootstrapper for NodeJS based REST APIs  ",
   "main": "dist/launcher/index.js",
+  "types": "dist/index.d.ts",
   "scripts": {
     "build": "tsc",
     "test": "nyc mocha --require ts-node/register test/**/*.ts"

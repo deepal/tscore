@@ -6,7 +6,8 @@
       "sourceMap": true,
       "strictNullChecks": true,
       "noImplicitAny": true,
-      "esModuleInterop": true
+      "esModuleInterop": true,
+      "declaration": true
     },
     "typeRoots": [ "node_modules/@types" ],
     "include": [
