@@ -6,8 +6,6 @@ import {IApplicationConfig} from '../launcher';
 import {ILogger, ILoggerConfig, Logger} from '../logger';
 import {IModule} from '../module';
 
-const START_EVENT : string = 'APPLICATION:START';
-
 export interface IContainer {
     logger(): ILogger;
     config(module: string): (object | undefined);
