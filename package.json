@@ -5,8 +5,7 @@
   "main": "dist/launcher/index.js",
   "types": "dist/index.d.ts",
   "scripts": {
-    "removeDist": "rm -r dist",
-    "build": "npm run removeDist && tsc",
+    "build": "tsc",
     "test": "nyc mocha --require ts-node/register test/**/*.ts"
   },
   "nyc": {
