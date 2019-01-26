@@ -1,4 +1,5 @@
 import * as bodyParser from 'body-parser';
+import { EventEmitter } from 'events';
 import express from 'express';
 import {readFileSync} from 'fs';
 import * as helmet from 'helmet';
@@ -26,17 +27,21 @@ export interface IServerConfig extends IListnerConfig {
 }
 
 export interface IRouteConfig {
-    method: string;
+    method?: string;
     path: string;
     handler: IMiddleware;
 }
 
-export class Server {
+export type IEventListener = (...args: any[]) => void;      //tslint:disable-line
+
+export class Server extends EventEmitter {
 
     private serverConfig : IServerConfig;
     private app : express.Application;
 
     constructor() {
+        super();
+
         this.app = express();
         this.app.locals = {
             appId: uuidV4()
@@ -73,7 +78,13 @@ export class Server {
             server = http.createServer(this.app);
         }
 
-        return server.listen(this.serverConfig.port, this.serverConfig.host);
+        // todo: need to find the best way to bind event handlers to server instance
+        return server
+            .listen(this.serverConfig.port, this.serverConfig.host)
+            .on('listening', this.emit.bind(this, 'listening'))
+            .on('connection', this.emit.bind(this, 'connection'))
+            .on('error', this.emit.bind(this, 'error'))
+            .on('close', this.emit.bind(this, 'close'));
     }
 
     /**
@@ -82,10 +93,10 @@ export class Server {
      */
     public routes(routeConfig: IRouteConfig[]) : Server {
         routeConfig.forEach((route : IRouteConfig) => this.registerRoute(route));
-        return this.route(routeConfig);
+        return this;
     }
 
-    public route(routeConfig: (IRouteConfig | IRouteConfig[])) : Server {
+    public route(routeConfig: IRouteConfig) : Server {
         return this.registerRoute(<IRouteConfig>routeConfig);
     }
 
