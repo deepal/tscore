@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>Module | @dpjayasekara/tscore</title>
+	<title>IContainer | @dpjayasekara/tscore</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,38 +56,31 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_module_index_.html">&quot;module/index&quot;</a>
+					<a href="../modules/_container_index_.html">&quot;container/index&quot;</a>
 				</li>
 				<li>
-					<a href="_module_index_.module.html">Module</a>
+					<a href="_container_index_.icontainer.html">IContainer</a>
 				</li>
 			</ul>
-			<h1>Class Module</h1>
+			<h1>Interface IContainer</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Module class</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">Module</span>
+						<span class="target">IContainer</span>
 					</li>
 				</ul>
 			</section>
 			<section class="tsd-panel">
-				<h3>Implements</h3>
+				<h3>Implemented by</h3>
 				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_module_index_.imodule.html" class="tsd-signature-type">IModule</a></li>
+					<li><a href="../classes/_container_index_.container.html" class="tsd-signature-type">Container</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -95,130 +88,81 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_module_index_.module.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
-							<h3>Properties</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_module_index_.module.html#config" class="tsd-kind-icon">config</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_module_index_.module.html#container" class="tsd-kind-icon">container</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_module_index_.module.html#logger" class="tsd-kind-icon">logger</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
 							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_module_index_.module.html#init" class="tsd-kind-icon">init</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_container_index_.icontainer.html#config" class="tsd-kind-icon">config</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_container_index_.icontainer.html#logger" class="tsd-kind-icon">logger</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_container_index_.icontainer.html#module" class="tsd-kind-icon">module</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Module<span class="tsd-signature-symbol">(</span>container<span class="tsd-signature-symbol">: </span><a href="../interfaces/_container_index_.icontainer.html" class="tsd-signature-type">IContainer</a>, logger<span class="tsd-signature-symbol">: </span><a href="../interfaces/_logger_index_.ilogger.html" class="tsd-signature-type">ILogger</a>, config<span class="tsd-signature-symbol">: </span><a href="../interfaces/_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_module_index_.module.html" class="tsd-signature-type">Module</a></li>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="config" class="tsd-anchor"></a>
+					<h3>config</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">(</span>module<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">object</span></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/module/index.ts#L16">module/index.ts:16</a></li>
+									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/container/index.ts#L11">container/index.ts:11</a></li>
 								</ul>
 							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Construct a module instance</p>
-								</div>
-							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
 							<ul class="tsd-parameters">
 								<li>
-									<h5>container: <a href="../interfaces/_container_index_.icontainer.html" class="tsd-signature-type">IContainer</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Container instance</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>logger: <a href="../interfaces/_logger_index_.ilogger.html" class="tsd-signature-type">ILogger</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Logger instance</p>
-										</div>
-									</div>
-								</li>
-								<li>
-									<h5>config: <a href="../interfaces/_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>Config object</p>
-										</div>
-									</div>
+									<h5>module: <span class="tsd-signature-type">string</span></h5>
 								</li>
 							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_module_index_.module.html" class="tsd-signature-type">Module</a></h4>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">undefined</span>
+								<span class="tsd-signature-symbol"> | </span>
+								<span class="tsd-signature-type">object</span>
+							</h4>
 						</li>
 					</ul>
 				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="config" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> config</h3>
-					<div class="tsd-signature tsd-kind-icon">config<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/module/index.ts#L16">module/index.ts:16</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="container" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> container</h3>
-					<div class="tsd-signature tsd-kind-icon">container<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_container_index_.icontainer.html" class="tsd-signature-type">IContainer</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/module/index.ts#L14">module/index.ts:14</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
 					<a name="logger" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> logger</h3>
-					<div class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">:</span> <a href="../interfaces/_logger_index_.ilogger.html" class="tsd-signature-type">ILogger</a></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/module/index.ts#L15">module/index.ts:15</a></li>
-						</ul>
-					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="init" class="tsd-anchor"></a>
-					<h3>init</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					<h3>logger</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">logger<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_logger_index_.ilogger.html" class="tsd-signature-type">ILogger</a></li>
 					</ul>
 					<ul class="tsd-descriptions">
 						<li class="tsd-description">
 							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_module_index_.imodule.html">IModule</a>.<a href="../interfaces/_module_index_.imodule.html#init">init</a></p>
 								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/module/index.ts#L30">module/index.ts:30</a></li>
+									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/container/index.ts#L10">container/index.ts:10</a></li>
 								</ul>
 							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+							<h4 class="tsd-returns-title">Returns <a href="_logger_index_.ilogger.html" class="tsd-signature-type">ILogger</a></h4>
+						</li>
+					</ul>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="module" class="tsd-anchor"></a>
+					<h3>module</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">module<span class="tsd-signature-symbol">(</span>moduleName<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_module_index_.imodule.html" class="tsd-signature-type">IModule</a></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/container/index.ts#L12">container/index.ts:12</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-parameters-title">Parameters</h4>
+							<ul class="tsd-parameters">
+								<li>
+									<h5>moduleName: <span class="tsd-signature-type">string</span></h5>
+								</li>
+							</ul>
+							<h4 class="tsd-returns-title">Returns <a href="_module_index_.imodule.html" class="tsd-signature-type">IModule</a></h4>
 						</li>
 					</ul>
 				</section>
@@ -236,7 +180,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_constants_.html">"constants"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_container_index_.html">"container/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -248,7 +192,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_logger_index_.html">"logger/index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_module_index_.html">"module/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -267,33 +211,27 @@
 			</nav>
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
+					<li class=" tsd-kind-class tsd-parent-kind-external-module">
+						<a href="../classes/_container_index_.container.html" class="tsd-kind-icon">Container</a>
+					</li>
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_module_index_.module.html" class="tsd-kind-icon">Module</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_container_index_.icontainer.html" class="tsd-kind-icon">IContainer</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_module_index_.module.html#constructor" class="tsd-kind-icon">constructor</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_container_index_.icontainer.html#config" class="tsd-kind-icon">config</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_module_index_.module.html#config" class="tsd-kind-icon">config</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_container_index_.icontainer.html#logger" class="tsd-kind-icon">logger</a>
 							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_module_index_.module.html#container" class="tsd-kind-icon">container</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_module_index_.module.html#logger" class="tsd-kind-icon">logger</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_module_index_.module.html#init" class="tsd-kind-icon">init</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_container_index_.icontainer.html#module" class="tsd-kind-icon">module</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_module_index_.imodule.html" class="tsd-kind-icon">IModule</a>
-					</li>
 				</ul>
 			</nav>
 		</div>

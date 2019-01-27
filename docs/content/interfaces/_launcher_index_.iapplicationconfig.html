@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IConfigLoader | @dpjayasekara/tscore</title>
+	<title>IApplicationConfig | @dpjayasekara/tscore</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_configloader_index_.html">&quot;configLoader/index&quot;</a>
+					<a href="../modules/_launcher_index_.html">&quot;launcher/index&quot;</a>
 				</li>
 				<li>
-					<a href="_configloader_index_.iconfigloader.html">IConfigLoader</a>
+					<a href="_launcher_index_.iapplicationconfig.html">IApplicationConfig</a>
 				</li>
 			</ul>
-			<h1>Interface IConfigLoader</h1>
+			<h1>Interface IApplicationConfig</h1>
 		</div>
 	</div>
 </header>
@@ -73,14 +73,8 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IConfigLoader</span>
+						<span class="target">IApplicationConfig</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implemented by</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../classes/_configloader_index_.configloader.html" class="tsd-signature-type">ConfigLoader</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -88,50 +82,80 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Methods</h3>
+							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_configloader_index_.iconfigloader.html#loadconfig" class="tsd-kind-icon">load<wbr>Config</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_configloader_index_.iconfigloader.html#loadconfigasync" class="tsd-kind-icon">load<wbr>Config<wbr>Async</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_launcher_index_.iapplicationconfig.html#basedir" class="tsd-kind-icon">base<wbr>Dir</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_launcher_index_.iapplicationconfig.html#configpath" class="tsd-kind-icon">config<wbr>Path</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_launcher_index_.iapplicationconfig.html#loggerconfig" class="tsd-kind-icon">logger<wbr>Config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_launcher_index_.iapplicationconfig.html#mainmoduledescription" class="tsd-kind-icon">main<wbr>Module<wbr>Description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_launcher_index_.iapplicationconfig.html#moduledescription" class="tsd-kind-icon">module<wbr>Description</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_launcher_index_.iapplicationconfig.html#name" class="tsd-kind-icon">name</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="loadconfig" class="tsd-anchor"></a>
-					<h3>load<wbr>Config</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/configLoader/index.ts#L9">configLoader/index.ts:9</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <a href="_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a></h4>
-						</li>
-					</ul>
+				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="basedir" class="tsd-anchor"></a>
+					<h3>base<wbr>Dir</h3>
+					<div class="tsd-signature tsd-kind-icon">base<wbr>Dir<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/launcher/index.ts#L11">launcher/index.ts:11</a></li>
+						</ul>
+					</aside>
 				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
-					<a name="loadconfigasync" class="tsd-anchor"></a>
-					<h3>load<wbr>Config<wbr>Async</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Config<wbr>Async<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/configLoader/index.ts#L10">configLoader/index.ts:10</a></li>
-								</ul>
-							</aside>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="configpath" class="tsd-anchor"></a>
+					<h3>config<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">config<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/launcher/index.ts#L12">launcher/index.ts:12</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="loggerconfig" class="tsd-anchor"></a>
+					<h3>logger<wbr>Config</h3>
+					<div class="tsd-signature tsd-kind-icon">logger<wbr>Config<span class="tsd-signature-symbol">:</span> <a href="_logger_index_.iloggerconfig.html" class="tsd-signature-type">ILoggerConfig</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/launcher/index.ts#L15">launcher/index.ts:15</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="mainmoduledescription" class="tsd-anchor"></a>
+					<h3>main<wbr>Module<wbr>Description</h3>
+					<div class="tsd-signature tsd-kind-icon">main<wbr>Module<wbr>Description<span class="tsd-signature-symbol">:</span> <a href="_launcher_index_.imoduledescription.html" class="tsd-signature-type">IModuleDescription</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/launcher/index.ts#L14">launcher/index.ts:14</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="moduledescription" class="tsd-anchor"></a>
+					<h3>module<wbr>Description</h3>
+					<div class="tsd-signature tsd-kind-icon">module<wbr>Description<span class="tsd-signature-symbol">:</span> <a href="_launcher_index_.imoduledescription.html" class="tsd-signature-type">IModuleDescription</a><span class="tsd-signature-symbol">[]</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/launcher/index.ts#L13">launcher/index.ts:13</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="name" class="tsd-anchor"></a>
+					<h3>name</h3>
+					<div class="tsd-signature tsd-kind-icon">name<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/launcher/index.ts#L10">launcher/index.ts:10</a></li>
+						</ul>
+					</aside>
 				</section>
 			</section>
 		</div>
@@ -141,7 +165,7 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_configloader_index_.html">"config<wbr>Loader/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -153,7 +177,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_index_.html">"index"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_launcher_index_.html">"launcher/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -179,25 +203,37 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_configloader_index_.configloader.html" class="tsd-kind-icon">Config<wbr>Loader</a>
+						<a href="../classes/_launcher_index_.launcher.html" class="tsd-kind-icon">Launcher</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_configloader_index_.iconfigloader.html" class="tsd-kind-icon">IConfig<wbr>Loader</a>
+						<a href="_launcher_index_.iapplicationconfig.html" class="tsd-kind-icon">IApplication<wbr>Config</a>
 						<ul>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_configloader_index_.iconfigloader.html#loadconfig" class="tsd-kind-icon">load<wbr>Config</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_launcher_index_.iapplicationconfig.html#basedir" class="tsd-kind-icon">base<wbr>Dir</a>
 							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-interface">
-								<a href="_configloader_index_.iconfigloader.html#loadconfigasync" class="tsd-kind-icon">load<wbr>Config<wbr>Async</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_launcher_index_.iapplicationconfig.html#configpath" class="tsd-kind-icon">config<wbr>Path</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_launcher_index_.iapplicationconfig.html#loggerconfig" class="tsd-kind-icon">logger<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_launcher_index_.iapplicationconfig.html#mainmoduledescription" class="tsd-kind-icon">main<wbr>Module<wbr>Description</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_launcher_index_.iapplicationconfig.html#moduledescription" class="tsd-kind-icon">module<wbr>Description</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_launcher_index_.iapplicationconfig.html#name" class="tsd-kind-icon">name</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_configloader_index_.iconfigobj.html" class="tsd-kind-icon">IConfig<wbr>Obj</a>
+						<a href="_launcher_index_.imoduledescription.html" class="tsd-kind-icon">IModule<wbr>Description</a>
 					</li>
 				</ul>
 			</nav>

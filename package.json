@@ -8,7 +8,7 @@
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "build": "tsc",
     "test": "nyc mocha --require ts-node/register test/**/*.ts",
-    "docs": "typedoc --out docs --mode modules ./lib && touch ./docs/.nojekyll"
+    "docs": "typedoc --out docs/content --mode modules ./lib"
   },
   "pre-commit": [
     "build"

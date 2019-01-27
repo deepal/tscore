@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>IHTTPSConfig | @dpjayasekara/tscore</title>
+	<title>IModule | @dpjayasekara/tscore</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,13 +56,13 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_server_index_.html">&quot;server/index&quot;</a>
+					<a href="../modules/_module_index_.html">&quot;module/index&quot;</a>
 				</li>
 				<li>
-					<a href="_server_index_.ihttpsconfig.html">IHTTPSConfig</a>
+					<a href="_module_index_.imodule.html">IModule</a>
 				</li>
 			</ul>
-			<h1>Interface IHTTPSConfig</h1>
+			<h1>Interface IModule</h1>
 		</div>
 	</div>
 </header>
@@ -73,8 +73,14 @@
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">IHTTPSConfig</span>
+						<span class="target">IModule</span>
 					</li>
+				</ul>
+			</section>
+			<section class="tsd-panel">
+				<h3>Implemented by</h3>
+				<ul class="tsd-hierarchy">
+					<li><a href="../classes/_module_index_.module.html" class="tsd-signature-type">Module</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -82,36 +88,32 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Properties</h3>
+							<h3>Methods</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_server_index_.ihttpsconfig.html#cert" class="tsd-kind-icon">cert</a></li>
-								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_server_index_.ihttpsconfig.html#key" class="tsd-kind-icon">key</a></li>
+								<li class="tsd-kind-method tsd-parent-kind-interface"><a href="_module_index_.imodule.html#init" class="tsd-kind-icon">init</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="cert" class="tsd-anchor"></a>
-					<h3>cert</h3>
-					<div class="tsd-signature tsd-kind-icon">cert<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/server/index.ts#L15">server/index.ts:15</a></li>
-						</ul>
-					</aside>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
-					<a name="key" class="tsd-anchor"></a>
-					<h3>key</h3>
-					<div class="tsd-signature tsd-kind-icon">key<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
-					<aside class="tsd-sources">
-						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/402870f/lib/server/index.ts#L14">server/index.ts:14</a></li>
-						</ul>
-					</aside>
+				<h2>Methods</h2>
+				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-interface">
+					<a name="init" class="tsd-anchor"></a>
+					<h3>init</h3>
+					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-interface">
+						<li class="tsd-signature tsd-kind-icon">init<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">void</span></li>
+					</ul>
+					<ul class="tsd-descriptions">
+						<li class="tsd-description">
+							<aside class="tsd-sources">
+								<ul>
+									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/617a087/lib/module/index.ts#L6">module/index.ts:6</a></li>
+								</ul>
+							</aside>
+							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">void</span></h4>
+						</li>
+					</ul>
 				</section>
 			</section>
 		</div>
@@ -139,7 +141,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_logger_index_.html">"logger/index"</a>
 					</li>
-					<li class=" tsd-kind-external-module">
+					<li class="current tsd-kind-external-module">
 						<a href="../modules/_module_index_.html">"module/index"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
@@ -151,7 +153,7 @@
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_security_index_.html">"security/index"</a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_server_index_.html">"server/index"</a>
 					</li>
 				</ul>
@@ -159,41 +161,20 @@
 			<nav class="tsd-navigation secondary menu-sticky">
 				<ul class="before-current">
 					<li class=" tsd-kind-class tsd-parent-kind-external-module">
-						<a href="../classes/_server_index_.server.html" class="tsd-kind-icon">Server</a>
+						<a href="../classes/_module_index_.module.html" class="tsd-kind-icon">Module</a>
 					</li>
 				</ul>
 				<ul class="current">
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_server_index_.ihttpsconfig.html" class="tsd-kind-icon">IHTTPSConfig</a>
+						<a href="_module_index_.imodule.html" class="tsd-kind-icon">IModule</a>
 						<ul>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_server_index_.ihttpsconfig.html#cert" class="tsd-kind-icon">cert</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-interface">
-								<a href="_server_index_.ihttpsconfig.html#key" class="tsd-kind-icon">key</a>
+							<li class=" tsd-kind-method tsd-parent-kind-interface">
+								<a href="_module_index_.imodule.html#init" class="tsd-kind-icon">init</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_server_index_.ilistnerconfig.html" class="tsd-kind-icon">IListner<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_server_index_.irouteconfig.html" class="tsd-kind-icon">IRoute<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="_server_index_.iserverconfig.html" class="tsd-kind-icon">IServer<wbr>Config</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_server_index_.html#ieventlistener" class="tsd-kind-icon">IEvent<wbr>Listener</a>
-					</li>
-					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
-						<a href="../modules/_server_index_.html#imiddleware" class="tsd-kind-icon">IMiddleware</a>
-					</li>
-					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
-						<a href="../modules/_server_index_.html#default_host" class="tsd-kind-icon">DEFAULT_<wbr>HOST</a>
-					</li>
 				</ul>
 			</nav>
 		</div>
