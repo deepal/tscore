@@ -64,35 +64,59 @@
 	<div class="row">
 		<div class="col-8 col-content">
 			<div class="tsd-panel tsd-typography">
-				<h1 id="tscore">TSCORE</h1>
+				<h1 id="tscore">TSCore</h1>
+				<p><a href="http://tscore.deepal.io/">http://tscore.deepal.io/</a></p>
 				<p><img src="https://img.shields.io/npm/v/@dpjayasekara/tscore.svg?colorB=brightgreen&style=flat-square" alt="">
 					<img src="https://img.shields.io/david/dpjayasekara/tscore.svg?style=flat-square" alt="">
 					<img src="https://img.shields.io/travis/dpjayasekara/tscore/master.svg?style=flat-square" alt="">
 				<a href="http://opensource.org/licenses/MIT"><img src="https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square" alt="The MIT License"></a> </p>
-				<p>A typescript based application bootstrapper for NodeJS/Express.js based REST APIs.</p>
+				<p>TSCore is a dependency injection container to develop REST APIs with NodeJS. In comes with a built-in http server powered by Express.j. TSCore is completely written in TypeScript, and comes all the type definitions built in.</p>
+				<h3 id="why-do-you-need-it-">Why do you need it?</h3>
+				<p>TSCore is not the silver bullet, but it helps you bootstrap your REST API in a matter of minutes. It comes with a built-in Express sever including, </p>
+				<ul>
+					<li>JSON Body parser using <code>body-parser</code></li>
+					<li>Basic auth header parser</li>
+					<li>Secure HTTP Headers configuration using <code>helmet</code></li>
+					<li>A dependency injection container</li>
+					<li>Built-in <code>bunyan</code> logger</li>
+				</ul>
+				<p><strong>More customizations are coming!!!</strong></p>
 				<h3 id="installation">Installation</h3>
 				<pre><code class="language-sh">npm i @dpjayasekara/tscore</code></pre>
 				<h2 id="usage">Usage</h2>
+				<p>For a sample application, please checkout : <a href="https://github.com/dpjayasekara/tscore-sample-app">https://github.com/dpjayasekara/tscore-sample-app</a></p>
+				<p>Write your code as individual modules with the following signature</p>
 				<h3 id="module">Module</h3>
 				<p>The following is an example for a tscore module.</p>
-				<pre><code class="language-js"><span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">ModuleA</span> </span>{
-    private container : Container;
-    private logger : Logger;
-    private config : IConfigObj;
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { Constants } <span class="hljs-keyword">from</span> <span class="hljs-string">'@dpjayasekara/tscore'</span>;
 
-    <span class="hljs-keyword">constructor</span>(container: Container, logger: Logger, config: IConfigObj) {
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">YourModule</span> </span>{
+    private container;
+    private logger;
+    private config;
+
+    <span class="hljs-keyword">constructor</span>(container, logger, config) {
+        <span class="hljs-comment">// access the container instance</span>
         <span class="hljs-keyword">this</span>.container = container;
+
+        <span class="hljs-comment">// access the logger instance</span>
         <span class="hljs-keyword">this</span>.logger = logger;
+
+        <span class="hljs-comment">// access the configuration object for this module</span>
         <span class="hljs-keyword">this</span>.config = config;
+
+        <span class="hljs-comment">// triggers yourFunction() when all the modules are loaded</span>
+        <span class="hljs-keyword">this</span>.container.on(Constants.EVENT.APPLICATION_START, <span class="hljs-keyword">this</span>.yourFunction.bind(<span class="hljs-keyword">this</span>));
     }
 
-    public printSomethingAboutA() {
-        <span class="hljs-keyword">this</span>.logger.info(<span class="hljs-string">`Hi, I'm from moduleA`</span>);
+    public yourFunction() {
+        <span class="hljs-comment">// do your thing</span>
     }
 }
 </code></pre>
 				<h3 id="launcher">Launcher</h3>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> {Launcher} <span class="hljs-keyword">from</span> <span class="hljs-string">'@dpjayasekara/tscore'</span>;
+				<p>You can use <code>Launcher</code> to to bootstrap your application.</p>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> {Launcher} <span class="hljs-keyword">from</span> <span class="hljs-string">'@dpjayasekara/tscore'</span>
 
 <span class="hljs-keyword">const</span> launcher = <span class="hljs-keyword">new</span> Launcher();
 
@@ -105,12 +129,62 @@ launcher
     })
     .module({ <span class="hljs-attr">name</span>: <span class="hljs-string">'a'</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">'./moduleA.ts'</span>})
     .module({ <span class="hljs-attr">name</span>: <span class="hljs-string">'b'</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">'./moduleB.ts'</span>})
-    .module({ <span class="hljs-attr">name</span>: <span class="hljs-string">'main'</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">'./main.ts'</span>})
-    .start();</code></pre>
-				<h4 id="tscore-module">tscore.module</h4>
-				<p>Initializes a submodule.</p>
-				<p>Syntax:</p>
-				<pre><code class="language-js">tscore.module(moduleName, modulePath)</code></pre>
+    .module({ <span class="hljs-attr">name</span>: <span class="hljs-string">'server'</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">'./main.ts'</span>})
+    .start();
+</code></pre>
+				<p>What is happening here:</p>
+				<ul>
+					<li>ModuleA is a typescript/javascript module which will be injected to the container with name <code>a</code>. This module can be accessed by any other injected module as follows assuming the module follows the aforementioned tscore module structure.</li>
+				</ul>
+				<pre><code><span class="hljs-keyword">const</span> moduleA = <span class="hljs-keyword">this</span>.container.<span class="hljs-keyword">module</span>(<span class="hljs-string">'a'</span>);</code></pre><ul>
+					<li>ModuleB is a typescript/javascript module which will be injected to the container with name <code>b</code></li>
+					<li>Server is the main module of our application. We need to start the server, only if all the other modules are loaded. This can be done by listening on the <code>APPLICATION_START</code> event emitted from the container. The following is the structure of your main module:</li>
+				</ul>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> { Container, Constants } <span class="hljs-keyword">from</span> <span class="hljs-string">'@dpjayasekara/tscore'</span>;
+
+<span class="hljs-keyword">export</span> <span class="hljs-keyword">default</span> <span class="hljs-class"><span class="hljs-keyword">class</span> <span class="hljs-title">Main</span> </span>{
+    private container;
+    private logger;
+    private config;
+    private serviceA;
+    private serviceB;
+
+    <span class="hljs-keyword">constructor</span>(container, logger, config) {
+        <span class="hljs-keyword">this</span>.container = container;
+        <span class="hljs-keyword">this</span>.logger = logger;
+        <span class="hljs-keyword">this</span>.config = config;
+        <span class="hljs-keyword">this</span>.startServer = <span class="hljs-keyword">this</span>.startServer.bind(<span class="hljs-keyword">this</span>)
+        <span class="hljs-keyword">this</span>.requestLogger = <span class="hljs-keyword">this</span>.requestLogger.bind(<span class="hljs-keyword">this</span>)
+
+        <span class="hljs-keyword">this</span>.serviceA = <span class="hljs-keyword">this</span>.container.module(<span class="hljs-string">'a'</span>);
+        <span class="hljs-keyword">this</span>.serviceB = <span class="hljs-keyword">this</span>.container.module(<span class="hljs-string">'b'</span>);
+
+        <span class="hljs-keyword">this</span>.container.on(Constants.EVENT.APPLICATION_START, <span class="hljs-keyword">this</span>.startServer);
+    }
+
+    private startServer() {
+        <span class="hljs-comment">// start the server</span>
+    }
+}
+</code></pre>
+				<p>In the above example, <code>startServer()</code> will be called once all the modules are loaded, and that is the exact place you need to fire up your server.</p>
+				<h3 id="api">API</h3>
+				<ul>
+					<li><a href="http://tscore.deepal.io/classes/_container_index_.container.html">Container</a></li>
+					<li><a href="http://tscore.deepal.io/modules/_logger_index_.html">Logger</a></li>
+					<li><a href="http://tscore.deepal.io/modules/_security_index_.html">Security</a></li>
+					<li><a href="http://tscore.deepal.io/modules/_module_index_.html">Module</a></li>
+					<li><a href="http://tscore.deepal.io/classes/_launcher_index_.launcher.html">Launcher</a></li>
+				</ul>
+				<p>For more details: <a href="http://tscore.deepal.io/">http://tscore.deepal.io/</a></p>
+				<h3 id="roadmap">Roadmap</h3>
+				<ul>
+					<li><input disabled="" type="checkbox"> Request signing module</li>
+					<li><input disabled="" type="checkbox"> Customizing server headers</li>
+					<li><input disabled="" type="checkbox"> Customizing logger</li>
+					<li><input disabled="" type="checkbox"> Configurable health check endpoint</li>
+					<li><input disabled="" type="checkbox"> TSCore Submodules</li>
+				</ul>
 			</div>
 		</div>
 		<div class="col-4 col-menu menu-sticky-wrap menu-highlight">
