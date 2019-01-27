@@ -1,3 +1,4 @@
+import { IConfigLoader } from '../configLoader';
 import { Container } from '../container';
 import { ILoggerConfig } from '../logger';
 
@@ -9,9 +10,8 @@ export interface IModuleDescription {
 export interface IApplicationConfig {
     name: string;
     baseDir: string;
-    configPath: string;
+    configLoader?: IConfigLoader;
     moduleDescription: IModuleDescription[];
-    mainModuleDescription: IModuleDescription;
     loggerConfig: ILoggerConfig;
 }
 
@@ -23,13 +23,11 @@ export class Launcher {
     private readonly applicationConfig : IApplicationConfig = {
         name: '',
         baseDir: '',
-        configPath: '',
         loggerConfig: {
             level: 'trace',
             name: ''
         },
-        moduleDescription: [],
-        mainModuleDescription: { name: '', path: ''}
+        moduleDescription: []
     };
 
     /**
@@ -50,10 +48,10 @@ export class Launcher {
 
     /**
      * Set local configuration file path
-     * @param configPath Local config file path
+     * @param configLoader Local config file path
      */
-    public withConfig(configPath: string) : Launcher {
-        this.applicationConfig.configPath = configPath;
+    public withConfig(configLoader: IConfigLoader) : Launcher {
+        this.applicationConfig.configLoader = configLoader;
         return this;
     }
 
@@ -79,6 +77,8 @@ export class Launcher {
      * Start application
      */
     public start() : void {
-        this.container.init(this.applicationConfig);
+        (async () : Promise<void> => {
+            await this.container.init(this.applicationConfig);
+        })();
     }
 }

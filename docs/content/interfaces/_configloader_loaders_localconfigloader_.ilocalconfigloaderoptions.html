@@ -3,7 +3,7 @@
 <head>
 	<meta charset="utf-8">
 	<meta http-equiv="X-UA-Compatible" content="IE=edge">
-	<title>ConfigLoader | @dpjayasekara/tscore</title>
+	<title>ILocalConfigLoaderOptions | @dpjayasekara/tscore</title>
 	<meta name="description" content="">
 	<meta name="viewport" content="width=device-width, initial-scale=1">
 	<link rel="stylesheet" href="../assets/css/main.css">
@@ -56,38 +56,25 @@
 					<a href="../globals.html">Globals</a>
 				</li>
 				<li>
-					<a href="../modules/_configloader_index_.html">&quot;configLoader/index&quot;</a>
+					<a href="../modules/_configloader_loaders_localconfigloader_.html">&quot;configLoader/loaders/localConfigLoader&quot;</a>
 				</li>
 				<li>
-					<a href="_configloader_index_.configloader.html">ConfigLoader</a>
+					<a href="_configloader_loaders_localconfigloader_.ilocalconfigloaderoptions.html">ILocalConfigLoaderOptions</a>
 				</li>
 			</ul>
-			<h1>Class ConfigLoader</h1>
+			<h1>Interface ILocalConfigLoaderOptions</h1>
 		</div>
 	</div>
 </header>
 <div class="container container-main">
 	<div class="row">
 		<div class="col-8 col-content">
-			<section class="tsd-panel tsd-comment">
-				<div class="tsd-comment tsd-typography">
-					<div class="lead">
-						<p>Internal module for loading configurations</p>
-					</div>
-				</div>
-			</section>
 			<section class="tsd-panel tsd-hierarchy">
 				<h3>Hierarchy</h3>
 				<ul class="tsd-hierarchy">
 					<li>
-						<span class="target">ConfigLoader</span>
+						<span class="target">ILocalConfigLoaderOptions</span>
 					</li>
-				</ul>
-			</section>
-			<section class="tsd-panel">
-				<h3>Implements</h3>
-				<ul class="tsd-hierarchy">
-					<li><a href="../interfaces/_configloader_index_.iconfigloader.html" class="tsd-signature-type">IConfigLoader</a></li>
 				</ul>
 			</section>
 			<section class="tsd-panel-group tsd-index-group">
@@ -95,123 +82,25 @@
 				<section class="tsd-panel tsd-index-panel">
 					<div class="tsd-index-content">
 						<section class="tsd-index-section ">
-							<h3>Constructors</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-constructor tsd-parent-kind-class"><a href="_configloader_index_.configloader.html#constructor" class="tsd-kind-icon">constructor</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section tsd-is-private tsd-is-private-protected">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
-								<li class="tsd-kind-property tsd-parent-kind-class tsd-is-private"><a href="_configloader_index_.configloader.html#configpath" class="tsd-kind-icon">config<wbr>Path</a></li>
-							</ul>
-						</section>
-						<section class="tsd-index-section ">
-							<h3>Methods</h3>
-							<ul class="tsd-index-list">
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_configloader_index_.configloader.html#loadconfig" class="tsd-kind-icon">load<wbr>Config</a></li>
-								<li class="tsd-kind-method tsd-parent-kind-class"><a href="_configloader_index_.configloader.html#loadconfigasync" class="tsd-kind-icon">load<wbr>Config<wbr>Async</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_configloader_loaders_localconfigloader_.ilocalconfigloaderoptions.html#filepath" class="tsd-kind-icon">file<wbr>Path</a></li>
 							</ul>
 						</section>
 					</div>
 				</section>
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Constructors</h2>
-				<section class="tsd-panel tsd-member tsd-kind-constructor tsd-parent-kind-class">
-					<a name="constructor" class="tsd-anchor"></a>
-					<h3>constructor</h3>
-					<ul class="tsd-signatures tsd-kind-constructor tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">new <wbr>Config<wbr>Loader<span class="tsd-signature-symbol">(</span>configPath<span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">string</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="_configloader_index_.configloader.html" class="tsd-signature-type">ConfigLoader</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/configLoader/index.ts#L17">configLoader/index.ts:17</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Create ConfigLoad instance</p>
-								</div>
-							</div>
-							<h4 class="tsd-parameters-title">Parameters</h4>
-							<ul class="tsd-parameters">
-								<li>
-									<h5>configPath: <span class="tsd-signature-type">string</span></h5>
-									<div class="tsd-comment tsd-typography">
-										<div class="lead">
-											<p>configuration file path</p>
-										</div>
-									</div>
-								</li>
-							</ul>
-							<h4 class="tsd-returns-title">Returns <a href="_configloader_index_.configloader.html" class="tsd-signature-type">ConfigLoader</a></h4>
-						</li>
-					</ul>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group tsd-is-private tsd-is-private-protected">
 				<h2>Properties</h2>
-				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-class tsd-is-private">
-					<a name="configpath" class="tsd-anchor"></a>
-					<h3><span class="tsd-flag ts-flagPrivate">Private</span> config<wbr>Path</h3>
-					<div class="tsd-signature tsd-kind-icon">config<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="filepath" class="tsd-anchor"></a>
+					<h3>file<wbr>Path</h3>
+					<div class="tsd-signature tsd-kind-icon">file<wbr>Path<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">string</span></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/configLoader/index.ts#L17">configLoader/index.ts:17</a></li>
+							<li>Defined in configLoader/loaders/localConfigLoader.ts:9</li>
 						</ul>
 					</aside>
-				</section>
-			</section>
-			<section class="tsd-panel-group tsd-member-group ">
-				<h2>Methods</h2>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadconfig" class="tsd-anchor"></a>
-					<h3>load<wbr>Config</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Config<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><a href="../interfaces/_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_configloader_index_.iconfigloader.html">IConfigLoader</a>.<a href="../interfaces/_configloader_index_.iconfigloader.html#loadconfig">loadConfig</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/configLoader/index.ts#L30">configLoader/index.ts:30</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load local configuration file</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <a href="../interfaces/_configloader_index_.iconfigobj.html" class="tsd-signature-type">IConfigObj</a></h4>
-						</li>
-					</ul>
-				</section>
-				<section class="tsd-panel tsd-member tsd-kind-method tsd-parent-kind-class">
-					<a name="loadconfigasync" class="tsd-anchor"></a>
-					<h3>load<wbr>Config<wbr>Async</h3>
-					<ul class="tsd-signatures tsd-kind-method tsd-parent-kind-class">
-						<li class="tsd-signature tsd-kind-icon">load<wbr>Config<wbr>Async<span class="tsd-signature-symbol">(</span><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></li>
-					</ul>
-					<ul class="tsd-descriptions">
-						<li class="tsd-description">
-							<aside class="tsd-sources">
-								<p>Implementation of <a href="../interfaces/_configloader_index_.iconfigloader.html">IConfigLoader</a>.<a href="../interfaces/_configloader_index_.iconfigloader.html#loadconfigasync">loadConfigAsync</a></p>
-								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/configLoader/index.ts#L40">configLoader/index.ts:40</a></li>
-								</ul>
-							</aside>
-							<div class="tsd-comment tsd-typography">
-								<div class="lead">
-									<p>Load configuration via HTTP</p>
-								</div>
-							</div>
-							<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">void</span><span class="tsd-signature-symbol">&gt;</span></h4>
-						</li>
-					</ul>
 				</section>
 			</section>
 		</div>
@@ -221,8 +110,14 @@
 					<li class="globals  ">
 						<a href="../globals.html"><em>Globals</em></a>
 					</li>
-					<li class="current tsd-kind-external-module">
+					<li class=" tsd-kind-external-module">
 						<a href="../modules/_configloader_index_.html">"config<wbr>Loader/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="../modules/_configloader_loaders_httpconfigloader_.html">"config<wbr>Loader/loaders/http<wbr>Config<wbr>Loader"</a>
+					</li>
+					<li class="current tsd-kind-external-module">
+						<a href="../modules/_configloader_loaders_localconfigloader_.html">"config<wbr>Loader/loaders/local<wbr>Config<wbr>Loader"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="../modules/_constants_.html">"constants"</a>
@@ -260,30 +155,18 @@
 				<ul class="before-current">
 				</ul>
 				<ul class="current">
-					<li class="current tsd-kind-class tsd-parent-kind-external-module">
-						<a href="_configloader_index_.configloader.html" class="tsd-kind-icon">Config<wbr>Loader</a>
+					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_configloader_loaders_localconfigloader_.ilocalconfigloaderoptions.html" class="tsd-kind-icon">ILocal<wbr>Config<wbr>Loader<wbr>Options</a>
 						<ul>
-							<li class=" tsd-kind-constructor tsd-parent-kind-class">
-								<a href="_configloader_index_.configloader.html#constructor" class="tsd-kind-icon">constructor</a>
-							</li>
-							<li class=" tsd-kind-property tsd-parent-kind-class tsd-is-private">
-								<a href="_configloader_index_.configloader.html#configpath" class="tsd-kind-icon">config<wbr>Path</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_configloader_index_.configloader.html#loadconfig" class="tsd-kind-icon">load<wbr>Config</a>
-							</li>
-							<li class=" tsd-kind-method tsd-parent-kind-class">
-								<a href="_configloader_index_.configloader.html#loadconfigasync" class="tsd-kind-icon">load<wbr>Config<wbr>Async</a>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_configloader_loaders_localconfigloader_.ilocalconfigloaderoptions.html#filepath" class="tsd-kind-icon">file<wbr>Path</a>
 							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_configloader_index_.iconfigloader.html" class="tsd-kind-icon">IConfig<wbr>Loader</a>
-					</li>
-					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
-						<a href="../interfaces/_configloader_index_.iconfigobj.html" class="tsd-kind-icon">IConfig<wbr>Obj</a>
+					<li class=" tsd-kind-function tsd-parent-kind-external-module">
+						<a href="../modules/_configloader_loaders_localconfigloader_.html#localconfigloader" class="tsd-kind-icon">local<wbr>Config<wbr>Loader</a>
 					</li>
 				</ul>
 			</nav>

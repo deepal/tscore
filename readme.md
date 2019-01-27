@@ -70,13 +70,15 @@ export default class YourModule {
 You can use `Launcher` to to bootstrap your application.
 
 ```js
-import {Launcher} from '@dpjayasekara/tscore'
+import {Launcher, ConfigLoader} from '@dpjayasekara/tscore'
 
 const launcher = new Launcher();
 
 launcher
     .onBaseDir(__dirname)
-    .withConfig('./config.json')
+    .withConfig(ConfigLoader.localConfigLoader({
+        filePath: './config.json'
+    }))
     .withLoggerConfig({
         name: 'myapp',
         level: 'debug'

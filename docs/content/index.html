@@ -116,13 +116,15 @@
 </code></pre>
 				<h3 id="launcher">Launcher</h3>
 				<p>You can use <code>Launcher</code> to to bootstrap your application.</p>
-				<pre><code class="language-js"><span class="hljs-keyword">import</span> {Launcher} <span class="hljs-keyword">from</span> <span class="hljs-string">'@dpjayasekara/tscore'</span>
+				<pre><code class="language-js"><span class="hljs-keyword">import</span> {Launcher, ConfigLoader} <span class="hljs-keyword">from</span> <span class="hljs-string">'@dpjayasekara/tscore'</span>
 
 <span class="hljs-keyword">const</span> launcher = <span class="hljs-keyword">new</span> Launcher();
 
 launcher
     .onBaseDir(__dirname)
-    .withConfig(<span class="hljs-string">'./config.json'</span>)
+    .withConfig(ConfigLoader.localConfigLoader({
+        <span class="hljs-attr">filePath</span>: <span class="hljs-string">'./config.json'</span>
+    }))
     .withLoggerConfig({
         <span class="hljs-attr">name</span>: <span class="hljs-string">'myapp'</span>,
         <span class="hljs-attr">level</span>: <span class="hljs-string">'debug'</span>
@@ -196,6 +198,12 @@ launcher
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_configloader_index_.html">"config<wbr>Loader/index"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_configloader_loaders_httpconfigloader_.html">"config<wbr>Loader/loaders/http<wbr>Config<wbr>Loader"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="modules/_configloader_loaders_localconfigloader_.html">"config<wbr>Loader/loaders/local<wbr>Config<wbr>Loader"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="modules/_constants_.html">"constants"</a>

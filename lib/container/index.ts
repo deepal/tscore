@@ -1,12 +1,13 @@
 import { EventEmitter } from 'events';
 import { join } from 'path';
-import { ConfigLoader, IConfigObj } from '../configLoader';
+import { IConfigLoader, IConfigObj } from '../configLoader';
 import * as Constants from '../constants';
 import { IApplicationConfig } from '../launcher';
 import { ILogger, ILoggerConfig, Logger } from '../logger';
 import { IModule } from '../module';
 
 export interface IContainer {
+    baseDir: string;
     logger(): ILogger;
     config(module: string): (object | undefined);
     module(moduleName: string): IModule;
@@ -16,22 +17,24 @@ export interface IContainer {
  * Internal module for dependency injection
  */
 export class Container extends EventEmitter implements IContainer {
+    public baseDir : string;
     private readonly modules : Map<string, IModule> = new Map<string, IModule>();
     private readonly store : Map<string, Object|Function>  = new Map<string, Object|Function>();
     private loggerObj : ILogger;
     private configObj : IConfigObj;
-    private baseDir : string;
 
     /**
      * Initialize container
      * @param applicationConfig Application configuration
      */
-    public init(applicationConfig : IApplicationConfig) : void {
+    public async init(applicationConfig : IApplicationConfig) : Promise<void> {
         this.baseDir = applicationConfig.baseDir;
 
-        this
-            .loadConfig(applicationConfig.configPath)
-            .initializeLogger(applicationConfig.loggerConfig);
+        if (applicationConfig.configLoader) {
+            await this.loadConfig(applicationConfig.configLoader);
+        }
+
+        this.initializeLogger(applicationConfig.loggerConfig);
 
         for (const module of applicationConfig.moduleDescription) {
             this.injectModule(
@@ -118,12 +121,11 @@ export class Container extends EventEmitter implements IContainer {
     }
 
     /**
-     * Load local configuration file
-     * @param configPath Local configuration file path
+     * Load configuration
+     * @param configLoader Config Loader instance
      */
-    private loadConfig(configPath: string) : Container {
-        const configLoader : ConfigLoader = new ConfigLoader(join(this.baseDir, configPath));
-        this.configObj = configLoader.loadConfig();
+    private async loadConfig(configLoader: IConfigLoader) : Promise<Container> {
+        this.configObj = await configLoader.loadConfig(this);
         return this;
     }
 }

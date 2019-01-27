@@ -1,4 +1,4 @@
-import { IConfigObj as Configuration } from './configLoader';
+import * as ConfigLoader from './configLoader';
 import * as Constants from './constants';
 import { Container } from './container';
 import {
@@ -19,6 +19,6 @@ export {
     Logger,
     Server,
     Launcher,
-    Configuration,
-    Constants
+    Constants,
+    ConfigLoader
 };
