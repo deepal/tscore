@@ -9,6 +9,7 @@ import {v4 as uuidV4} from 'uuid';
 import {basicAuthParser} from '../security';
 
 const DEFAULT_HOST : string = '0.0.0.0';
+const DEFAULT_PORT : number = 8080;
 
 export interface IHTTPSConfig {
     key: string;
@@ -17,13 +18,23 @@ export interface IHTTPSConfig {
 
 export interface IListnerConfig {
     host?: string;
-    port: number;
+    port?: number;
     secure?: boolean;
 }
 
 export type IMiddleware = (req: express.Request, res: express.Response, next?: Function) => void;
 
+export interface IServerHeadersConfig {
+    noCache?: boolean;
+    frameGuard?: boolean;
+    xssFilter?: boolean;
+    maskPoweredBy?: boolean;
+}
+
 export interface IServerConfig extends IListnerConfig {
+    basicAuthParser?: boolean;
+    jsonBodyParser?: boolean;
+    secureHeaders?: IServerHeadersConfig;
     httpsConfig? : IHTTPSConfig;
 }
 
@@ -34,6 +45,19 @@ export interface IRouteConfig {
 }
 
 export type IEventListener = (...args: any[]) => void;      //tslint:disable-line
+
+const defaultServerConfig: IServerConfig = {
+    port: DEFAULT_PORT,
+    basicAuthParser: true,
+    jsonBodyParser: true,
+    secure: false,
+    secureHeaders: {
+        frameGuard: true,
+        maskPoweredBy: true,
+        noCache: true,
+        xssFilter: true
+    }
+};
 
 /**
  * Express.js-based application server
@@ -46,21 +70,29 @@ export class Server extends EventEmitter {
     /**
      * Construct a server instance
      */
-    constructor() {
+    constructor(customServerConfig: IServerConfig = defaultServerConfig) {
         super();
 
-        this.app = express();
-        this.app.locals = {
-            appId: uuidV4()
+        this.serverConfig = {
+            ...defaultServerConfig,
+            ...customServerConfig,
+            secureHeaders: { ...defaultServerConfig.secureHeaders, ...customServerConfig.secureHeaders }
         };
 
-        this.app
-            .use(bodyParser.json())
-            .use(helmet.noCache())
-            .use(helmet.frameguard())
-            .use(helmet.xssFilter())
-            .use(helmet.hidePoweredBy({ setTo: <string>this.app.locals.appId }))
-            .use(this.parseBasicAuthHeader);
+        this.app = express();
+        this.app.locals = { appId: uuidV4() };
+
+        const headersConfig: IServerHeadersConfig = <IServerHeadersConfig>this.serverConfig.secureHeaders;
+
+        // parser request content
+        if (this.serverConfig.basicAuthParser) this.app.use(this.parseBasicAuthHeader);
+        if (this.serverConfig.jsonBodyParser) this.app.use(bodyParser.json());
+
+        // security headlers
+        if (headersConfig.noCache) this.app.use(helmet.noCache());
+        if (headersConfig.frameGuard) this.app.use(helmet.frameguard());
+        if (headersConfig.xssFilter) this.app.use(helmet.xssFilter());
+        if (headersConfig.maskPoweredBy) this.app.use(helmet.hidePoweredBy({ setTo: <string>this.app.locals.appId }));
     }
 
     /**
