@@ -1,8 +1,11 @@
+.vscode
+tsconfig.json
+tslint.json
 .nyc_output
 coverage
 docs
 deploy.sh
-travis.yml
-./lib/sample.ts
+.travis.yml
+lib
 test
 .npmrc
