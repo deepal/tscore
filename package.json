@@ -7,7 +7,8 @@
   "scripts": {
     "lint": "tslint --project tsconfig.json --config tslint.json",
     "build": "tsc",
-    "test": "nyc mocha --require ts-node/register test/**/*.ts"
+    "test": "nyc mocha --require ts-node/register test/**/*.ts",
+    "docs": "typedoc --out docs --mode modules ./lib"
   },
   "pre-commit": [
     "build"
@@ -58,7 +59,8 @@
     "source-map-support": "0.5.10",
     "ts-node": "7.0.1",
     "tslint": "5.12.1",
-    "tslint-microsoft-contrib": "6.0.0"
+    "tslint-microsoft-contrib": "6.0.0",
+    "typedoc": "0.14.2"
   },
   "directories": {
     "doc": "docs",
