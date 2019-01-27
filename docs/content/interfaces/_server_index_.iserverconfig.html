@@ -89,10 +89,13 @@
 						<section class="tsd-index-section ">
 							<h3>Properties</h3>
 							<ul class="tsd-index-list">
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_server_index_.iserverconfig.html#basicauthparser" class="tsd-kind-icon">basic<wbr>Auth<wbr>Parser</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_server_index_.iserverconfig.html#host" class="tsd-kind-icon">host</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_server_index_.iserverconfig.html#httpsconfig" class="tsd-kind-icon">https<wbr>Config</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_server_index_.iserverconfig.html#jsonbodyparser" class="tsd-kind-icon">json<wbr>Body<wbr>Parser</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_server_index_.iserverconfig.html#port" class="tsd-kind-icon">port</a></li>
 								<li class="tsd-kind-property tsd-parent-kind-interface tsd-is-inherited"><a href="_server_index_.iserverconfig.html#secure" class="tsd-kind-icon">secure</a></li>
+								<li class="tsd-kind-property tsd-parent-kind-interface"><a href="_server_index_.iserverconfig.html#secureheaders" class="tsd-kind-icon">secure<wbr>Headers</a></li>
 							</ul>
 						</section>
 					</div>
@@ -100,6 +103,16 @@
 			</section>
 			<section class="tsd-panel-group tsd-member-group ">
 				<h2>Properties</h2>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="basicauthparser" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> basic<wbr>Auth<wbr>Parser</h3>
+					<div class="tsd-signature tsd-kind-icon">basic<wbr>Auth<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L35">server/index.ts:35</a></li>
+						</ul>
+					</aside>
+				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="host" class="tsd-anchor"></a>
 					<h3><span class="tsd-flag ts-flagOptional">Optional</span> host</h3>
@@ -107,7 +120,7 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_server_index_.ilistnerconfig.html">IListnerConfig</a>.<a href="_server_index_.ilistnerconfig.html#host">host</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/4a65bc5/lib/server/index.ts#L19">server/index.ts:19</a></li>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L20">server/index.ts:20</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -117,18 +130,28 @@
 					<div class="tsd-signature tsd-kind-icon">https<wbr>Config<span class="tsd-signature-symbol">:</span> <a href="_server_index_.ihttpsconfig.html" class="tsd-signature-type">IHTTPSConfig</a></div>
 					<aside class="tsd-sources">
 						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/4a65bc5/lib/server/index.ts#L27">server/index.ts:27</a></li>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L38">server/index.ts:38</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="jsonbodyparser" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> json<wbr>Body<wbr>Parser</h3>
+					<div class="tsd-signature tsd-kind-icon">json<wbr>Body<wbr>Parser<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">false</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">true</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L36">server/index.ts:36</a></li>
 						</ul>
 					</aside>
 				</section>
 				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 					<a name="port" class="tsd-anchor"></a>
-					<h3>port</h3>
-					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">number</span></div>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> port</h3>
+					<div class="tsd-signature tsd-kind-icon">port<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">undefined</span><span class="tsd-signature-symbol"> | </span><span class="tsd-signature-type">number</span></div>
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_server_index_.ilistnerconfig.html">IListnerConfig</a>.<a href="_server_index_.ilistnerconfig.html#port">port</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/4a65bc5/lib/server/index.ts#L20">server/index.ts:20</a></li>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L21">server/index.ts:21</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -139,7 +162,17 @@
 					<aside class="tsd-sources">
 						<p>Inherited from <a href="_server_index_.ilistnerconfig.html">IListnerConfig</a>.<a href="_server_index_.ilistnerconfig.html#secure">secure</a></p>
 						<ul>
-							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/4a65bc5/lib/server/index.ts#L21">server/index.ts:21</a></li>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L22">server/index.ts:22</a></li>
+						</ul>
+					</aside>
+				</section>
+				<section class="tsd-panel tsd-member tsd-kind-property tsd-parent-kind-interface">
+					<a name="secureheaders" class="tsd-anchor"></a>
+					<h3><span class="tsd-flag ts-flagOptional">Optional</span> secure<wbr>Headers</h3>
+					<div class="tsd-signature tsd-kind-icon">secure<wbr>Headers<span class="tsd-signature-symbol">:</span> <a href="_server_index_.iserverheadersconfig.html" class="tsd-signature-type">IServerHeadersConfig</a></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/b43907a/lib/server/index.ts#L37">server/index.ts:37</a></li>
 						</ul>
 					</aside>
 				</section>
@@ -205,11 +238,17 @@
 					<li class="current tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="_server_index_.iserverconfig.html" class="tsd-kind-icon">IServer<wbr>Config</a>
 						<ul>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_server_index_.iserverconfig.html#basicauthparser" class="tsd-kind-icon">basic<wbr>Auth<wbr>Parser</a>
+							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_server_index_.iserverconfig.html#host" class="tsd-kind-icon">host</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface">
 								<a href="_server_index_.iserverconfig.html#httpsconfig" class="tsd-kind-icon">https<wbr>Config</a>
+							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_server_index_.iserverconfig.html#jsonbodyparser" class="tsd-kind-icon">json<wbr>Body<wbr>Parser</a>
 							</li>
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_server_index_.iserverconfig.html#port" class="tsd-kind-icon">port</a>
@@ -217,10 +256,16 @@
 							<li class=" tsd-kind-property tsd-parent-kind-interface tsd-is-inherited">
 								<a href="_server_index_.iserverconfig.html#secure" class="tsd-kind-icon">secure</a>
 							</li>
+							<li class=" tsd-kind-property tsd-parent-kind-interface">
+								<a href="_server_index_.iserverconfig.html#secureheaders" class="tsd-kind-icon">secure<wbr>Headers</a>
+							</li>
 						</ul>
 					</li>
 				</ul>
 				<ul class="after-current">
+					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
+						<a href="_server_index_.iserverheadersconfig.html" class="tsd-kind-icon">IServer<wbr>Headers<wbr>Config</a>
+					</li>
 					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module">
 						<a href="../modules/_server_index_.html#ieventlistener" class="tsd-kind-icon">IEvent<wbr>Listener</a>
 					</li>
@@ -229,6 +274,12 @@
 					</li>
 					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
 						<a href="../modules/_server_index_.html#default_host" class="tsd-kind-icon">DEFAULT_<wbr>HOST</a>
+					</li>
+					<li class=" tsd-kind-variable tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_server_index_.html#default_port" class="tsd-kind-icon">DEFAULT_<wbr>PORT</a>
+					</li>
+					<li class=" tsd-kind-object-literal tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="../modules/_server_index_.html#defaultserverconfig" class="tsd-kind-icon">default<wbr>Server<wbr>Config</a>
 					</li>
 				</ul>
 			</nav>

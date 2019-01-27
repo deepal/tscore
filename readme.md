@@ -139,15 +139,13 @@ In the above example, `startServer()` will be called once all the modules are lo
 - [Module](http://tscore.deepal.io/modules/_module_index_.html)
 - [Launcher](http://tscore.deepal.io/classes/_launcher_index_.launcher.html)
 
-
-
 For more details: http://tscore.deepal.io/
-
 
 ### Roadmap
 
 - [ ] Request signing module
 - [ ] Customizing server headers
-- [ ] Customizing logger
+- [ ] Custom logger support
+- [ ] Async configuration loading support
 - [ ] Configurable health check endpoint
 - [ ] TSCore Submodules
