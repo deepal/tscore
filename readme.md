@@ -135,13 +135,7 @@ In the above example, `startServer()` will be called once all the modules are lo
 
 ### API
 
-- [Container](http://tscore.deepal.io/classes/_container_index_.container.html)
-- [Logger](http://tscore.deepal.io/modules/_logger_index_.html)
-- [Security](http://tscore.deepal.io/modules/_security_index_.html)
-- [Module](http://tscore.deepal.io/modules/_module_index_.html)
-- [Launcher](http://tscore.deepal.io/classes/_launcher_index_.launcher.html)
-
-For more details: http://tscore.deepal.io/
+http://tscore.deepal.io
 
 ### Roadmap
 
