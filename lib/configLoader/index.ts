@@ -1,5 +1,5 @@
-import {readFile, readFileSync} from 'fs';
-import {promisify} from 'util';
+import { readFile, readFileSync } from 'fs';
+import { promisify } from 'util';
 
 export interface IConfigObj {
     [key: string]: (string|number|boolean|IConfigObj);

@@ -1,6 +1,7 @@
 {
     "extends": "tslint-microsoft-contrib",
     "rules":{
+        "whitespace": [true, "check-module"],
         "no-relative-imports": { "severity": "off" },
         "no-console": { "severity": "off" },
         "export-name": { "severity": "off" },

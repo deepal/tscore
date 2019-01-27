@@ -1,4 +1,4 @@
-import {basicAuthParser} from './basicAuthParser';
+import { basicAuthParser } from './basicAuthParser';
 
 export {
     basicAuthParser

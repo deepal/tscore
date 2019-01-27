@@ -1,5 +1,5 @@
-import {Container} from '../container';
-import {ILoggerConfig} from '../logger';
+import { Container } from '../container';
+import { ILoggerConfig } from '../logger';
 
 export interface IModuleDescription {
     name: string;

@@ -1,14 +1,14 @@
-import {IConfigObj as Configuration} from './configLoader';
+import { IConfigObj as Configuration } from './configLoader';
 import * as Constants from './constants';
-import {Container} from './container';
+import { Container } from './container';
 import {
     IApplicationConfig as ApplicationConfig,
     IModuleDescription as ModuleDescription,
     Launcher
 } from './launcher';
-import {ILoggerConfig as LoggerConfig, Logger} from './logger';
-import {IModule as Module} from './module';
-import {Server} from './server';
+import { ILoggerConfig as LoggerConfig, Logger } from './logger';
+import { IModule as Module } from './module';
+import { Server } from './server';
 
 export {
     Container,

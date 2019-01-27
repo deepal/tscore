@@ -1,10 +1,10 @@
-import {EventEmitter} from 'events';
-import {join} from 'path';
-import {ConfigLoader, IConfigObj} from '../configLoader';
+import { EventEmitter } from 'events';
+import { join } from 'path';
+import { ConfigLoader, IConfigObj } from '../configLoader';
 import * as Constants from '../constants';
-import {IApplicationConfig} from '../launcher';
-import {ILogger, ILoggerConfig, Logger} from '../logger';
-import {IModule} from '../module';
+import { IApplicationConfig } from '../launcher';
+import { ILogger, ILoggerConfig, Logger } from '../logger';
+import { IModule } from '../module';
 
 export interface IContainer {
     logger(): ILogger;

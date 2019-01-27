@@ -1,12 +1,12 @@
 import * as bodyParser from 'body-parser';
 import { EventEmitter } from 'events';
 import express, { Request, Response } from 'express';
-import {readFileSync} from 'fs';
+import { readFileSync } from 'fs';
 import * as helmet from 'helmet';
 import * as http from 'http';
 import * as https from 'https';
-import {v4 as uuidV4} from 'uuid';
-import {basicAuthParser} from '../security';
+import { v4 as uuidV4 } from 'uuid';
+import { basicAuthParser } from '../security';
 
 const DEFAULT_HOST : string = '0.0.0.0';
 const DEFAULT_PORT : number = 8080;
