@@ -14,7 +14,8 @@ export function httpConfigLoader(configOptions: IHTTPConfigLoaderOptions) : ICon
     const fetchConfig: Function = promisify(request.default);
     return {
         async loadConfig() : Promise<IConfigObj> {
-            return JSON.parse(await fetchConfig(configOptions));
+            const { body } = await fetchConfig(configOptions);
+            return JSON.parse(body);
         }
     };
 }
