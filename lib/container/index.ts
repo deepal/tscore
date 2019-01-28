@@ -105,8 +105,20 @@ export class Container extends EventEmitter implements IContainer {
      */
     private injectModule(name : string, modulePath : string) : Container {
         try {
-            const moduleClass = require(join(this.baseDir, modulePath)).default      // tslint:disable-line
-            const moduleConfig : (IConfigObj|undefined) = <IConfigObj|undefined>this.configObj[name];
+            let moduleConfig : (IConfigObj|undefined);
+            let moduleClass;
+            const loadedModule = require(join(this.baseDir, modulePath));
+
+            if (loadedModule.__esModule) {
+                moduleClass = loadedModule.default;      // tslint:disable-line
+            } else {
+                moduleClass = loadedModule;
+            }
+            
+            if (this.configObj && this.configObj.hasOwnProperty(name)) {
+                moduleConfig = <IConfigObj|undefined>this.configObj[name];
+            }
+
             const moduleInstance : (typeof moduleClass) = new moduleClass(this, this.logger(), moduleConfig);
 
             if (this.modules.has(name)) {
