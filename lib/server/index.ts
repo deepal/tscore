@@ -6,7 +6,6 @@ import * as helmet from 'helmet';
 import * as http from 'http';
 import * as https from 'https';
 import { v4 as uuidV4 } from 'uuid';
-import { basicAuthParser } from '../security';
 
 const DEFAULT_HOST : string = '0.0.0.0';
 const DEFAULT_PORT : number = 8080;
@@ -42,6 +41,11 @@ export interface IRouteConfig {
     method?: string;
     path: string;
     handler: IMiddleware;
+}
+
+export interface IBasicAuthInfo {
+    username: string;
+    password: string;
 }
 
 export type IEventListener = (...args: any[]) => void;      //tslint:disable-line
@@ -172,13 +176,24 @@ export class Server extends EventEmitter {
      */
     private parseBasicAuthHeader(req: Request, res: Response, next: Function) : void {
         const authHeader: (string|undefined) = req.headers.authorization;
-        try {
-            res.locals.auth = {
-                header: authHeader,
-                ...basicAuthParser(authHeader)
-            };
-            next();
-        } catch (err) {
+
+        if (authHeader) {
+            try {
+                const [username, password] 
+                    = Buffer.from(authHeader.split('Basic ')[1], 'base64')
+                        .toString('utf8')
+                        .split(':');
+
+                res.locals.auth = {
+                    header: authHeader,
+                    username,
+                    password
+                };
+            } finally {
+                return next();
+            }
+        } else {
+            // if auth header is not available, skip
             next();
         }
     }
