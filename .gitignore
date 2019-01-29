@@ -3,5 +3,5 @@ node_modules
 coverage
 .vscode
 lib/sample.ts
-dist
+build
 deploy.sh
