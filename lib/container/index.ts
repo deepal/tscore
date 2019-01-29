@@ -110,7 +110,7 @@ export class Container extends EventEmitter implements IContainer {
             const loadedModule = require(join(this.baseDir, modulePath));
 
             if (loadedModule.__esModule) {
-                moduleClass = loadedModule.default;      // tslint:disable-line
+                moduleClass = loadedModule.default;
             } else {
                 moduleClass = loadedModule;
             }

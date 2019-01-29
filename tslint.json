@@ -1,15 +1,16 @@
 {
     "extends": "tslint-microsoft-contrib",
     "rules":{
+        "non-literal-require": false,
         "whitespace": [true, "check-module"],
-        "no-relative-imports": { "severity": "off" },
-        "no-console": { "severity": "off" },
-        "export-name": { "severity": "off" },
-        "newline-before-return": { "severity": "off" },
+        "no-relative-imports": false,
+        "no-console": false,
+        "export-name": false,
+        "newline-before-return": false,
         "curly": [true, "ignore-same-line"],
-        "align": { "severity": "off"},
-        "no-reserved-keywords": { "severity": "off"},
-        "no-suspicious-comment": { "severity": "off"}
+        "align": false,
+        "no-reserved-keywords": false,
+        "no-suspicious-comment": false
     },
     "linterOptions": {
         "project":true
