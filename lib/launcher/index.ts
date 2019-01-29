@@ -1,3 +1,6 @@
+import { readFile } from 'fs';
+import { join } from 'path';
+import { promisify } from 'util';
 import { IConfigLoader } from '../configLoader';
 import { Container } from '../container';
 import { ILoggerConfig } from '../logger';
@@ -7,7 +10,7 @@ export interface IModuleDescription {
     path: string;
 }
 
-export interface IApplicationConfig {
+export interface IApplicationConfig extends ILauncherConfig {
     name: string;
     baseDir: string;
     configLoader?: IConfigLoader;
@@ -15,26 +18,46 @@ export interface IApplicationConfig {
     loggerConfig: ILoggerConfig;
 }
 
+export interface ILauncherConfig {
+    name: string;
+    baseDir?: string;
+    loggerConfig?: ILoggerConfig;
+}
+
 /**
  * Application launcher
  */
 export class Launcher {
     private readonly container : Container;
-    private readonly applicationConfig : IApplicationConfig = {
-        name: '',
-        baseDir: '',
-        loggerConfig: {
-            level: 'trace',
-            name: ''
-        },
-        moduleDescription: []
-    };
+    private applicationConfig : IApplicationConfig;
+    private defaultApplicationConfig : IApplicationConfig;
+    private readonly DEFAULT_LOG_LEVEL : 'trace' = 'trace';
 
     /**
      * Construct a launcher instance
      */
-    constructor() {
+    constructor(launcherConfig?: ILauncherConfig) {
         this.container = new Container();
+        this.defaultApplicationConfig = {
+            name: '',
+            baseDir: process.cwd(),
+            loggerConfig: {
+                level: this.DEFAULT_LOG_LEVEL,
+                name: ''
+            },
+            moduleDescription: []
+        };
+
+        const loggerConfig : ILoggerConfig = {
+            ...this.defaultApplicationConfig.loggerConfig,
+            ...(launcherConfig? launcherConfig.loggerConfig : {})
+        };
+
+        this.applicationConfig = {
+            ...this.defaultApplicationConfig,
+            ...launcherConfig,
+            loggerConfig
+        };
     }
 
     /**
@@ -60,6 +83,7 @@ export class Launcher {
      * @param loggerConfig Logger config
      */
     public withLoggerConfig(loggerConfig: ILoggerConfig) : Launcher {
+        // This function can ovderride the app name in logs
         this.applicationConfig.loggerConfig = loggerConfig;
         return this;
     }
@@ -78,7 +102,28 @@ export class Launcher {
      */
     public start() : void {
         (async () : Promise<void> => {
-            await this.container.init(this.applicationConfig);
+            const config : IApplicationConfig = await this.sanitizeApplicationConfig(this.applicationConfig);
+            await this.container.init(config);
         })();
+    }
+
+    /**
+     * Validates the application config and sets default values for undefined properties
+     * @param config Application config to be sanitized
+     */
+    private async sanitizeApplicationConfig(config: IApplicationConfig) : Promise<IApplicationConfig> {
+        const appConfig : IApplicationConfig = {...config};
+        const readPackageJson : Function = promisify(readFile);
+        if (appConfig.name.length === 0) {
+            try {
+                appConfig.name = JSON.parse(
+                    (await readPackageJson(join(config.baseDir, 'package.json'))).toString()
+                ).name;
+            } catch (err) {
+                throw new Error('[Launcher] Missing required parameter: \'name\'');
+            }
+        }
+
+        return appConfig;
     }
 }

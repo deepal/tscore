@@ -13,6 +13,16 @@ export interface IContainer {
     module(moduleName: string): IModule;
 }
 
+export interface IConstructible<T> {
+    prototype: T;
+    new (container: IContainer, logger: ILogger, config: (IConfigObj | undefined)): T;
+}
+
+export interface IESModule<T> {
+    default: IConstructible<T>;
+    __esModule: true;
+}
+
 /**
  * Internal module for dependency injection
  */
@@ -34,7 +44,10 @@ export class Container extends EventEmitter implements IContainer {
             await this.loadConfig(applicationConfig.configLoader);
         }
 
-        this.initializeLogger(applicationConfig.loggerConfig);
+        this.initializeLogger({
+            ...applicationConfig.loggerConfig,
+            name: applicationConfig.name
+        });
 
         for (const module of applicationConfig.moduleDescription) {
             this.injectModule(
@@ -106,20 +119,20 @@ export class Container extends EventEmitter implements IContainer {
     private injectModule(name : string, modulePath : string) : Container {
         try {
             let moduleConfig : (IConfigObj|undefined);
-            let moduleClass;
-            const loadedModule = require(join(this.baseDir, modulePath));
+            let moduleClass : IConstructible<IModule>;
+            const loadedModule : (IConstructible<IModule> | IESModule<IModule>) = require(join(this.baseDir, modulePath));
 
-            if (loadedModule.__esModule) {
-                moduleClass = loadedModule.default;
+            if (loadedModule.hasOwnProperty('__esModule')) {
+                moduleClass = (<IESModule<IModule>>loadedModule).default;
             } else {
-                moduleClass = loadedModule;
+                moduleClass = <IConstructible<IModule>>loadedModule;
             }
-            
+
             if (this.configObj && this.configObj.hasOwnProperty(name)) {
                 moduleConfig = <IConfigObj|undefined>this.configObj[name];
             }
 
-            const moduleInstance : (typeof moduleClass) = new moduleClass(this, this.logger(), moduleConfig);
+            const moduleInstance : IModule = new moduleClass(this, this.logger(), moduleConfig);
 
             if (this.modules.has(name)) {
                 throw new Error(`failed to load module '${name}'. a module with the same name is already loaded`);

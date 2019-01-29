@@ -3,7 +3,7 @@ import { IncomingMessage, OutgoingMessage } from 'http';
 
 export interface ILoggerConfig {
     name: string;
-    level: bunyan.LogLevel;
+    level?: bunyan.LogLevel;
     filePath?: string;
 }
 
