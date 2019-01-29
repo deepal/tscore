@@ -10,6 +10,12 @@ export interface IHTTPConfigLoaderOptions {
     headers?: object;
 }
 
+/**
+ * Load application configuration over an HTTP config API
+ * @param configOptions Request options to load config over http
+ * @returns Config Loader module
+ * @example
+ */
 export function httpConfigLoader(configOptions: IHTTPConfigLoaderOptions) : IConfigLoader {
     const fetchConfig: Function = promisify(request.default);
     return {

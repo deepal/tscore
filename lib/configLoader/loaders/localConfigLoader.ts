@@ -9,6 +9,10 @@ export interface ILocalConfigLoaderOptions {
     filePath: string;
 }
 
+/**
+ * Load local JSON file as application configuration
+ * @param configOptions Local config loader options
+ */
 export function localConfigLoader(configOptions: ILocalConfigLoaderOptions) : IConfigLoader {
     const readConfig: Function = promisify(readFile);
     return {
