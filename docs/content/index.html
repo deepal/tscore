@@ -121,12 +121,12 @@
 <span class="hljs-keyword">const</span> launcher = <span class="hljs-keyword">new</span> Launcher();
 
 launcher
-    .onBaseDir(__dirname)
-    .withConfig(ConfigLoader.localConfigLoader({
-        <span class="hljs-attr">filePath</span>: <span class="hljs-string">'./config.json'</span>
+    .onBaseDir(__dirname)                           <span class="hljs-comment">// optional function call. defaults to process.cwd()</span>
+    .withConfig(ConfigLoader.localConfigLoader({    <span class="hljs-comment">// optional if config loading is required</span>
+        filePath: <span class="hljs-string">'./config.json'</span>
     }))
-    .withLoggerConfig({
-        <span class="hljs-attr">name</span>: <span class="hljs-string">'myapp'</span>,
+    .withLoggerConfig({                             <span class="hljs-comment">// optional if no explicit minimum log level or log file is not configured</span>
+        name: <span class="hljs-string">'myapp'</span>,
         <span class="hljs-attr">level</span>: <span class="hljs-string">'debug'</span>
     })
     .module({ <span class="hljs-attr">name</span>: <span class="hljs-string">'a'</span>, <span class="hljs-attr">path</span>: <span class="hljs-string">'./moduleA.ts'</span>})
@@ -174,12 +174,12 @@ launcher
 				<p><a href="http://tscore.deepal.io">http://tscore.deepal.io</a></p>
 				<h3 id="roadmap">Roadmap</h3>
 				<ul>
-					<li><input disabled="" type="checkbox"> Request signing module</li>
-					<li><input disabled="" type="checkbox"> Customizing server headers</li>
-					<li><input disabled="" type="checkbox"> Custom logger support</li>
-					<li><input disabled="" type="checkbox"> Async configuration loading support</li>
-					<li><input disabled="" type="checkbox"> Configurable health check endpoint</li>
-					<li><input disabled="" type="checkbox"> TSCore Submodules</li>
+					<li><input checked="" disabled="" type="checkbox"> Launcher:Async configuration loading support</li>
+					<li><input disabled="" type="checkbox"> Server:Customizing server headers</li>
+					<li><input disabled="" type="checkbox"> Server:Request signing module</li>
+					<li><input disabled="" type="checkbox"> Launcher:Custom logger support</li>
+					<li><input disabled="" type="checkbox"> Server:Configurable health check endpoint</li>
+					<li><input disabled="" type="checkbox"> Launcher:TSCore Submodules</li>
 				</ul>
 			</div>
 		</div>

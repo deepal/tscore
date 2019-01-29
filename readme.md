@@ -75,11 +75,11 @@ import {Launcher, ConfigLoader} from '@dpjayasekara/tscore'
 const launcher = new Launcher();
 
 launcher
-    .onBaseDir(__dirname)
-    .withConfig(ConfigLoader.localConfigLoader({
+    .onBaseDir(__dirname)                           // optional function call. defaults to process.cwd()
+    .withConfig(ConfigLoader.localConfigLoader({    // optional if config loading is required
         filePath: './config.json'
     }))
-    .withLoggerConfig({
+    .withLoggerConfig({                             // optional if no explicit minimum log level or log file is not configured
         name: 'myapp',
         level: 'debug'
     })
@@ -139,9 +139,9 @@ http://tscore.deepal.io
 
 ### Roadmap
 
-- [ ] Request signing module
-- [ ] Customizing server headers
-- [ ] Custom logger support
-- [ ] Async configuration loading support
-- [ ] Configurable health check endpoint
-- [ ] TSCore Submodules
+- [x] Launcher:Async configuration loading support
+- [ ] Server:Customizing server headers
+- [ ] Server:Request signing module
+- [ ] Launcher:Custom logger support
+- [ ] Server:Configurable health check endpoint
+- [ ] Launcher:TSCore Submodules
