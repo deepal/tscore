@@ -11,7 +11,7 @@
     "docs": "typedoc --out docs/content --mode modules ./lib"
   },
   "pre-commit": [
-    "build"
+    "lint"
   ],
   "nyc": {
     "include": [
