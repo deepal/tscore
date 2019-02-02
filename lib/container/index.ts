@@ -40,8 +40,8 @@ export class Container extends EventEmitter implements IContainer {
     public async init(applicationConfig : IApplicationConfig) : Promise<void> {
         this.baseDir = applicationConfig.baseDir;
 
-        if (applicationConfig.configLoader) {
-            await this.loadConfig(applicationConfig.configLoader);
+        if (Boolean(applicationConfig.configLoader)) {
+            await this.loadConfig(<IConfigLoader>applicationConfig.configLoader);
         }
 
         this.initializeLogger({
@@ -120,7 +120,7 @@ export class Container extends EventEmitter implements IContainer {
         try {
             let moduleConfig : (IConfigObj|undefined);
             let moduleClass : IConstructible<IModule>;
-            const loadedModule : (IConstructible<IModule> | IESModule<IModule>) = require(join(this.baseDir, modulePath));
+            const loadedModule : (IConstructible<IModule> | IESModule<IModule>) = require(join(this.baseDir, modulePath));      //tslint:disable-line
 
             if (loadedModule.hasOwnProperty('__esModule')) {
                 moduleClass = (<IESModule<IModule>>loadedModule).default;
@@ -128,7 +128,7 @@ export class Container extends EventEmitter implements IContainer {
                 moduleClass = <IConstructible<IModule>>loadedModule;
             }
 
-            if (this.configObj && this.configObj.hasOwnProperty(name)) {
+            if (Boolean(this.configObj) && this.configObj.hasOwnProperty(name)) {
                 moduleConfig = <IConfigObj|undefined>this.configObj[name];
             }
 

@@ -48,7 +48,21 @@ export interface IBasicAuthInfo {
     password: string;
 }
 
+export interface IAppLocals {
+    appId: string;
+}
+
+export interface IResponseLocals {
+    auth: {
+        header: string;
+        username: string;
+        password: string;
+    };
+}
+
 export type IEventListener = (...args: any[]) => void;      //tslint:disable-line
+
+type EventEmitterCallback = typeof EventEmitter.prototype.emit;
 
 const defaultServerConfig: IServerConfig = {
     port: DEFAULT_PORT,
@@ -89,14 +103,16 @@ export class Server extends EventEmitter {
         const headersConfig: IServerHeadersConfig = <IServerHeadersConfig>this.serverConfig.secureHeaders;
 
         // parser request content
-        if (this.serverConfig.basicAuthParser) this.app.use(this.parseBasicAuthHeader);
-        if (this.serverConfig.jsonBodyParser) this.app.use(bodyParser.json());
+        if (Boolean(this.serverConfig.basicAuthParser)) this.app.use(this.parseBasicAuthHeader);
+        if (Boolean(this.serverConfig.jsonBodyParser)) this.app.use(bodyParser.json());
 
         // security headlers
-        if (headersConfig.noCache) this.app.use(helmet.noCache());
-        if (headersConfig.frameGuard) this.app.use(helmet.frameguard());
-        if (headersConfig.xssFilter) this.app.use(helmet.xssFilter());
-        if (headersConfig.maskPoweredBy) this.app.use(helmet.hidePoweredBy({ setTo: <string>this.app.locals.appId }));
+        if (Boolean(headersConfig.noCache)) this.app.use(helmet.noCache());
+        if (Boolean(headersConfig.frameGuard)) this.app.use(helmet.frameguard());
+        if (Boolean(headersConfig.xssFilter)) this.app.use(helmet.xssFilter());
+        if (Boolean(headersConfig.maskPoweredBy)) {
+            this.app.use(helmet.hidePoweredBy({ setTo: (<IAppLocals>this.app.locals).appId }));
+        }
     }
 
     /**
@@ -136,10 +152,10 @@ export class Server extends EventEmitter {
         // todo: need to find the best way to bind event handlers to server instance
         return server
             .listen(this.serverConfig.port, this.serverConfig.host)
-            .on('listening', this.emit.bind(this, 'listening'))
-            .on('connection', this.emit.bind(this, 'connection'))
-            .on('error', this.emit.bind(this, 'error'))
-            .on('close', this.emit.bind(this, 'close'));
+            .on('listening', <EventEmitterCallback>this.emit.bind(this, 'listening'))
+            .on('connection', <EventEmitterCallback>this.emit.bind(this, 'connection'))
+            .on('error', <EventEmitterCallback>this.emit.bind(this, 'error'))
+            .on('close', <EventEmitterCallback>this.emit.bind(this, 'close'));
     }
 
     /**
@@ -156,7 +172,7 @@ export class Server extends EventEmitter {
      * @param routeConfig Route configuration
      */
     public route(routeConfig: IRouteConfig) : Server {
-        return this.registerRoute(<IRouteConfig>routeConfig);
+        return this.registerRoute(routeConfig);
     }
 
     /**
@@ -177,20 +193,20 @@ export class Server extends EventEmitter {
     private parseBasicAuthHeader(req: Request, res: Response, next: Function) : void {
         const authHeader: (string|undefined) = req.headers.authorization;
 
-        if (authHeader) {
+        if (Boolean(authHeader)) {
             try {
-                const [username, password] 
-                    = Buffer.from(authHeader.split('Basic ')[1], 'base64')
+                const [username, password]
+                    = Buffer.from((<string>authHeader).split('Basic ')[1], 'base64')
                         .toString('utf8')
                         .split(':');
 
-                res.locals.auth = {
-                    header: authHeader,
+                (<IResponseLocals>res.locals).auth = {
+                    header: <string>authHeader,
                     username,
                     password
                 };
             } finally {
-                return next();
+                return next();      // tslint:disable-line
             }
         } else {
             // if auth header is not available, skip

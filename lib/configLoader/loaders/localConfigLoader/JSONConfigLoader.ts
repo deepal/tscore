@@ -8,15 +8,17 @@ export interface ILocalConfigLoaderOptions {
     filePath: string;
 }
 
+type IReadConfigFn = (configFilePath: string) => Promise<Buffer>;
+
 /**
  * Load local JSON file as application configuration
  * @param configOptions Local config loader options
  */
 export function jsonConfigLoader(configOptions: ILocalConfigLoaderOptions) : IConfigLoader {
-    const readConfig: Function = promisify(readFile);
+    const readConfig: IReadConfigFn = promisify(readFile);
     return {
         async loadConfig(container: Container) : Promise<IConfigObj> {
-            return JSON.parse((
+            return <IConfigObj>JSON.parse((
                 await readConfig(join(container.baseDir, configOptions.filePath))
             ).toString());
         }

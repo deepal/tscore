@@ -8,7 +8,10 @@ export interface IHTTPConfigLoaderOptions {
     method: string;
     body?: object;
     headers?: object;
+    json?: boolean;
 }
+
+type IFetchConfigFn = (configOptions: IHTTPConfigLoaderOptions) => Promise<request.ResponseAsJSON>;
 
 /**
  * Load application configuration over an HTTP config API
@@ -17,11 +20,11 @@ export interface IHTTPConfigLoaderOptions {
  * @example
  */
 export function httpConfigLoader(configOptions: IHTTPConfigLoaderOptions) : IConfigLoader {
-    const fetchConfig: Function = promisify(request.default);
+    const fetchConfig : IFetchConfigFn = promisify(request.default);
     return {
         async loadConfig() : Promise<IConfigObj> {
-            const { body } = await fetchConfig(configOptions);
-            return JSON.parse(body);
+            const { body } = await fetchConfig({...configOptions, json: true});
+            return <IConfigObj>body;
         }
     };
 }

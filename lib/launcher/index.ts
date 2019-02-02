@@ -10,6 +10,12 @@ export interface IModuleDescription {
     path: string;
 }
 
+export interface ILauncherConfig {
+    name: string;
+    baseDir?: string;
+    loggerConfig?: ILoggerConfig;
+}
+
 export interface IApplicationConfig extends ILauncherConfig {
     name: string;
     baseDir: string;
@@ -18,19 +24,13 @@ export interface IApplicationConfig extends ILauncherConfig {
     loggerConfig: ILoggerConfig;
 }
 
-export interface ILauncherConfig {
-    name: string;
-    baseDir?: string;
-    loggerConfig?: ILoggerConfig;
-}
-
 /**
  * Application launcher
  */
 export class Launcher {
     private readonly container : Container;
-    private applicationConfig : IApplicationConfig;
-    private defaultApplicationConfig : IApplicationConfig;
+    private readonly applicationConfig : IApplicationConfig;
+    private readonly defaultApplicationConfig : IApplicationConfig;
     private readonly DEFAULT_LOG_LEVEL : 'trace' = 'trace';
 
     /**
@@ -50,7 +50,7 @@ export class Launcher {
 
         const loggerConfig : ILoggerConfig = {
             ...this.defaultApplicationConfig.loggerConfig,
-            ...(launcherConfig? launcherConfig.loggerConfig : {})
+            ...(Boolean(launcherConfig) ? (<ILauncherConfig>launcherConfig).loggerConfig : {})
         };
 
         this.applicationConfig = {
@@ -101,10 +101,13 @@ export class Launcher {
      * Start application
      */
     public start() : void {
-        (async () : Promise<void> => {
-            const config : IApplicationConfig = await this.sanitizeApplicationConfig(this.applicationConfig);
-            await this.container.init(config);
-        })();
+        this.sanitizeApplicationConfig(this.applicationConfig)
+            .then(async (config: IApplicationConfig) => {
+                return this.container.init(config);
+            })
+            .catch((err: Error) => {
+                console.log(err);
+            });
     }
 
     /**
@@ -117,7 +120,7 @@ export class Launcher {
         if (appConfig.name.length === 0) {
             try {
                 appConfig.name = JSON.parse(
-                    (await readPackageJson(join(config.baseDir, 'package.json'))).toString()
+                    (await readPackageJson(join(config.baseDir, 'package.json'))).toString()    // tslint:disable-line no-unsafe-any
                 ).name;
             } catch (err) {
                 throw new Error('[Launcher] Missing required parameter: \'name\'');
