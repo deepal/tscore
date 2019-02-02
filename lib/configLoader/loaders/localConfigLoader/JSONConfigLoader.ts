@@ -1,9 +1,8 @@
-
 import { readFile } from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
-import { IConfigLoader, IConfigObj } from '..';
-import { Container } from '../..';
+import { IConfigLoader, IConfigObj } from '../..';
+import { Container } from '../../..';
 
 export interface ILocalConfigLoaderOptions {
     filePath: string;
@@ -13,7 +12,7 @@ export interface ILocalConfigLoaderOptions {
  * Load local JSON file as application configuration
  * @param configOptions Local config loader options
  */
-export function localConfigLoader(configOptions: ILocalConfigLoaderOptions) : IConfigLoader {
+export function jsonConfigLoader(configOptions: ILocalConfigLoaderOptions) : IConfigLoader {
     const readConfig: Function = promisify(readFile);
     return {
         async loadConfig(container: Container) : Promise<IConfigObj> {

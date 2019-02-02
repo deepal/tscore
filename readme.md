@@ -7,6 +7,8 @@ http://tscore.deepal.io/
 ![](https://img.shields.io/travis/dpjayasekara/tscore/master.svg?style=flat-square)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) 
 
+![](https://github.com/dpjayasekara/tscore/raw/master/docs/logo.png)
+
 TSCore is a dependency injection container to develop REST APIs with NodeJS. In comes with a built-in http server powered by Express.js. TSCore is completely written in TypeScript, and comes all the type definitions built in.
 
 ### Why do you need it?

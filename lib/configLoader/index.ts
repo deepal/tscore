@@ -1,6 +1,7 @@
 import { Container } from '../container';
 import { httpConfigLoader } from './loaders/httpConfigLoader';
-import { localConfigLoader } from './loaders/localConfigLoader';
+import { jsConfigLoader } from './loaders/localConfigLoader/JSConfigLoader';
+import { jsonConfigLoader } from './loaders/localConfigLoader/JSONConfigLoader';
 
 export interface IConfigObj {
     [key: string]: (string|number|boolean|IConfigObj);
@@ -12,5 +13,6 @@ export interface IConfigLoader {
 
 export {
     httpConfigLoader,
-    localConfigLoader
+    jsConfigLoader as localJSConfigLoader,
+    jsonConfigLoader as localJSONConfigLoader
 };
