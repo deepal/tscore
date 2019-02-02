@@ -13,6 +13,6 @@ export interface IConfigLoader {
 
 export {
     httpConfigLoader,
-    jsConfigLoader as localJSConfigLoader,
-    jsonConfigLoader as localJSONConfigLoader
+    jsConfigLoader as jsConfigLoader,
+    jsonConfigLoader as jsonConfigLoader
 };
