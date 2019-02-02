@@ -132,7 +132,17 @@ export class Container extends EventEmitter implements IContainer {
                 moduleConfig = <IConfigObj|undefined>this.configObj[name];
             }
 
-            const moduleInstance : IModule = new moduleClass(this, this.logger(), moduleConfig);
+            let loggerInstance : ILogger = this.logger();
+
+            /**
+             * If child logger functionality is implemented, create a child logger for each module
+             * If the logger is based on bunyan, child logger is available out-of-the-box
+             */
+            if (typeof this.logger().child === 'function') {
+                loggerInstance = (<Function>this.logger().child)({ module: name });         // tslint:disable-line
+            }
+
+            const moduleInstance : IModule = new moduleClass(this, loggerInstance, moduleConfig);
 
             if (this.modules.has(name)) {
                 throw new Error(`failed to load module '${name}'. a module with the same name is already loaded`);

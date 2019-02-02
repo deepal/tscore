@@ -8,6 +8,7 @@ export interface ILoggerConfig {
 }
 
 export type LogFunction = (...message : (string[] | Error[] | IncomingMessage[] | OutgoingMessage[])) => void;
+export type CreateChildLoggerFunction = (options: Object, simple?: boolean | undefined) => ILogger;
 
 export interface ILogger {
     trace: LogFunction;
@@ -16,6 +17,7 @@ export interface ILogger {
     warn: LogFunction;
     error: LogFunction;
     fatal: LogFunction;
+    child?: CreateChildLoggerFunction;
 }
 
 /**
@@ -29,6 +31,7 @@ export class Logger implements ILogger {
     public warn : LogFunction;
     public error : LogFunction;
     public fatal : LogFunction;
+    public child : CreateChildLoggerFunction;
 
     /**
      * Construct a logger instance
@@ -72,5 +75,8 @@ export class Logger implements ILogger {
         this.warn = <LogFunction>warn.bind(logger);
         this.error = <LogFunction>error.bind(logger);
         this.fatal = <LogFunction>fatal.bind(logger);
+        this.child = <CreateChildLoggerFunction>(
+            <CreateChildLoggerFunction>logger.child
+        ).bind(logger);
     }
 }
