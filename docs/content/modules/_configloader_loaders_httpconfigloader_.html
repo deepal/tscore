@@ -76,12 +76,52 @@
 								<li class="tsd-kind-interface tsd-parent-kind-external-module"><a href="../interfaces/_configloader_loaders_httpconfigloader_.ihttpconfigloaderoptions.html" class="tsd-kind-icon">IHTTPConfig<wbr>Loader<wbr>Options</a></li>
 							</ul>
 						</section>
+						<section class="tsd-index-section tsd-is-not-exported">
+							<h3>Type aliases</h3>
+							<ul class="tsd-index-list">
+								<li class="tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported"><a href="_configloader_loaders_httpconfigloader_.html#ifetchconfigfn" class="tsd-kind-icon">IFetch<wbr>Config<wbr>Fn</a></li>
+							</ul>
+						</section>
 						<section class="tsd-index-section ">
 							<h3>Functions</h3>
 							<ul class="tsd-index-list">
 								<li class="tsd-kind-function tsd-parent-kind-external-module"><a href="_configloader_loaders_httpconfigloader_.html#httpconfigloader" class="tsd-kind-icon">http<wbr>Config<wbr>Loader</a></li>
 							</ul>
 						</section>
+					</div>
+				</section>
+			</section>
+			<section class="tsd-panel-group tsd-member-group tsd-is-not-exported">
+				<h2>Type aliases</h2>
+				<section class="tsd-panel tsd-member tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+					<a name="ifetchconfigfn" class="tsd-anchor"></a>
+					<h3>IFetch<wbr>Config<wbr>Fn</h3>
+					<div class="tsd-signature tsd-kind-icon">IFetch<wbr>Config<wbr>Fn<span class="tsd-signature-symbol">:</span> <span class="tsd-signature-type">function</span></div>
+					<aside class="tsd-sources">
+						<ul>
+							<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/d01e27a/lib/configLoader/loaders/httpConfigLoader.ts#L14">configLoader/loaders/httpConfigLoader.ts:14</a></li>
+						</ul>
+					</aside>
+					<div class="tsd-type-declaration">
+						<h4>Type declaration</h4>
+						<ul class="tsd-parameters">
+							<li class="tsd-parameter-siganture">
+								<ul class="tsd-signatures tsd-kind-type-literal tsd-parent-kind-type-alias tsd-is-not-exported">
+									<li class="tsd-signature tsd-kind-icon"><span class="tsd-signature-symbol">(</span>configOptions<span class="tsd-signature-symbol">: </span><a href="../interfaces/_configloader_loaders_httpconfigloader_.ihttpconfigloaderoptions.html" class="tsd-signature-type">IHTTPConfigLoaderOptions</a><span class="tsd-signature-symbol">)</span><span class="tsd-signature-symbol">: </span><span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ResponseAsJSON</span><span class="tsd-signature-symbol">&gt;</span></li>
+								</ul>
+								<ul class="tsd-descriptions">
+									<li class="tsd-description">
+										<h4 class="tsd-parameters-title">Parameters</h4>
+										<ul class="tsd-parameters">
+											<li>
+												<h5>configOptions: <a href="../interfaces/_configloader_loaders_httpconfigloader_.ihttpconfigloaderoptions.html" class="tsd-signature-type">IHTTPConfigLoaderOptions</a></h5>
+											</li>
+										</ul>
+										<h4 class="tsd-returns-title">Returns <span class="tsd-signature-type">Promise</span><span class="tsd-signature-symbol">&lt;</span><span class="tsd-signature-type">ResponseAsJSON</span><span class="tsd-signature-symbol">&gt;</span></h4>
+									</li>
+								</ul>
+							</li>
+						</ul>
 					</div>
 				</section>
 			</section>
@@ -97,7 +137,7 @@
 						<li class="tsd-description">
 							<aside class="tsd-sources">
 								<ul>
-									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/21fc710/lib/configLoader/loaders/httpConfigLoader.ts#L24">configLoader/loaders/httpConfigLoader.ts:24</a></li>
+									<li>Defined in <a href="https://github.com/dpjayasekara/tscore/blob/d01e27a/lib/configLoader/loaders/httpConfigLoader.ts#L22">configLoader/loaders/httpConfigLoader.ts:22</a></li>
 								</ul>
 							</aside>
 							<div class="tsd-comment tsd-typography">
@@ -106,11 +146,7 @@
 								</div>
 								<dl class="tsd-comment-tags">
 									<dt>example</dt>
-									<dd><p>(new Launcher())
-											.withConfig(httpConfigLoader({
-											url: &#39;<a href="http://example.com/configs&#39;">http://example.com/configs&#39;</a>
-										}));</p>
-									</dd>
+									<dd></dd>
 								</dl>
 							</div>
 							<h4 class="tsd-parameters-title">Parameters</h4>
@@ -142,7 +178,13 @@
 						<a href="_configloader_loaders_httpconfigloader_.html">"config<wbr>Loader/loaders/http<wbr>Config<wbr>Loader"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
-						<a href="_configloader_loaders_localconfigloader_.html">"config<wbr>Loader/loaders/local<wbr>Config<wbr>Loader"</a>
+						<a href="_configloader_loaders_localconfigloader_jsconfigloader_.html">"config<wbr>Loader/loaders/local<wbr>Config<wbr>Loader/JSConfig<wbr>Loader"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_configloader_loaders_localconfigloader_jsonconfigloader_.html">"config<wbr>Loader/loaders/local<wbr>Config<wbr>Loader/JSONConfig<wbr>Loader"</a>
+					</li>
+					<li class=" tsd-kind-external-module">
+						<a href="_configloader_loaders_localconfigloader_types_.html">"config<wbr>Loader/loaders/local<wbr>Config<wbr>Loader/types"</a>
 					</li>
 					<li class=" tsd-kind-external-module">
 						<a href="_constants_.html">"constants"</a>
@@ -174,6 +216,9 @@
 				<ul class="before-current">
 					<li class=" tsd-kind-interface tsd-parent-kind-external-module">
 						<a href="../interfaces/_configloader_loaders_httpconfigloader_.ihttpconfigloaderoptions.html" class="tsd-kind-icon">IHTTPConfig<wbr>Loader<wbr>Options</a>
+					</li>
+					<li class=" tsd-kind-type-alias tsd-parent-kind-external-module tsd-is-not-exported">
+						<a href="_configloader_loaders_httpconfigloader_.html#ifetchconfigfn" class="tsd-kind-icon">IFetch<wbr>Config<wbr>Fn</a>
 					</li>
 					<li class=" tsd-kind-function tsd-parent-kind-external-module">
 						<a href="_configloader_loaders_httpconfigloader_.html#httpconfigloader" class="tsd-kind-icon">http<wbr>Config<wbr>Loader</a>
