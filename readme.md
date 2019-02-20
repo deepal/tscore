@@ -7,7 +7,7 @@ http://tscore.deepal.io/
 ![](https://img.shields.io/travis/dpjayasekara/tscore/master.svg?style=flat-square)
 [![The MIT License](https://img.shields.io/badge/license-MIT-orange.svg?style=flat-square)](http://opensource.org/licenses/MIT) 
 
-![](https://github.com/dpjayasekara/tscore/raw/master/docs/logo.png)
+![](https://github.com/dpjayasekara/tscore/raw/master/docs/tscore.png)
 
 TSCore is a dependency injection container to develop REST APIs with NodeJS. In comes with a built-in http server powered by Express.js. TSCore is completely written in TypeScript, and comes all the type definitions built in.
 
@@ -46,7 +46,7 @@ export default class YourModule {
     private logger;
     private config;
 
-    constructor(container, logger, config) {
+    constructor({container, logger, config}) {
         // access the container instance
         this.container = container;
 
@@ -113,7 +113,7 @@ export default class Main {
     private serviceA;
     private serviceB;
 
-    constructor(container, logger, config) {
+    constructor({container, logger, config}) {
         this.container = container;
         this.logger = logger;
         this.config = config;

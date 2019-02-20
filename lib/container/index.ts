@@ -13,9 +13,15 @@ export interface IContainer {
     module(moduleName: string): IModule;
 }
 
+export interface IInjections {
+    container?: IContainer;
+    logger?: ILogger;
+    config?: IConfigObj;
+}
+
 export interface IConstructible<T> {
     prototype: T;
-    new (container: IContainer, logger: ILogger, config: (IConfigObj | undefined)): T;
+    new (injections: IInjections): T;
 }
 
 export interface IESModule<T> {
@@ -142,7 +148,11 @@ export class Container extends EventEmitter implements IContainer {
                 loggerInstance = (<Function>this.logger().child)({ module: name });         // tslint:disable-line
             }
 
-            const moduleInstance : IModule = new moduleClass(this, loggerInstance, moduleConfig);
+            const moduleInstance : IModule = new moduleClass({
+                container: this,
+                logger: loggerInstance,
+                config: moduleConfig
+            });
 
             if (this.modules.has(name)) {
                 throw new Error(`failed to load module '${name}'. a module with the same name is already loaded`);
