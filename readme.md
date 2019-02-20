@@ -78,7 +78,7 @@ const launcher = new Launcher();
 
 launcher
     .onBaseDir(__dirname)                           // optional function call. defaults to process.cwd()
-    .withConfig(ConfigLoader.localConfigLoader({    // optional if config loading is required
+    .withConfig(ConfigLoader.jsConfigLoader({    // optional if config loading is required
         filePath: './config.json'
     }))
     .withLoggerConfig({                             // optional if no explicit minimum log level or log file is not configured
