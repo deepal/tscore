@@ -1,8 +1,8 @@
 import { readFile } from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
-import { IConfigLoader, IConfigObj } from '../..';
 import { Container } from '../../..';
+import { IConfigLoader, IConfigObj } from '../../../types';
 
 export interface ILocalConfigLoaderOptions {
     filePath: string;

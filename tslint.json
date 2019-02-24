@@ -11,7 +11,8 @@
         "align": false,
         "no-reserved-keywords": false,
         "no-suspicious-comment": false,
-        "match-default-export-name": false
+        "match-default-export-name": false,
+        "no-implicit-dependencies": [true, "dev"]
     },
     "linterOptions": {
         "project":true

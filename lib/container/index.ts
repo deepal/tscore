@@ -1,33 +1,18 @@
 import { EventEmitter } from 'events';
 import { join } from 'path';
-import { IConfigLoader, IConfigObj } from '../configLoader';
 import * as Constants from '../constants';
-import { IApplicationConfig } from '../launcher';
-import { ILogger, ILoggerConfig, Logger } from '../logger';
-import { IModule } from '../module';
-
-export interface IContainer {
-    baseDir: string;
-    logger(): ILogger;
-    config(module: string): (object | undefined);
-    module(moduleName: string): IModule;
-}
-
-export interface IInjections {
-    container?: IContainer;
-    logger?: ILogger;
-    config?: IConfigObj;
-}
-
-export interface IConstructible<T> {
-    prototype: T;
-    new (injections: IInjections): T;
-}
-
-export interface IESModule<T> {
-    default: IConstructible<T>;
-    __esModule: true;
-}
+import { Logger } from '../logger';
+import {
+    IApplicationConfig,
+    IConfigLoader,
+    IConfigObj,
+    IConstructibleModule,
+    IContainer,
+    ILogger,
+    ILoggerConfig,
+    IModule,
+    ITsCoreESModule
+} from '../types';
 
 /**
  * Internal module for dependency injection
@@ -125,13 +110,13 @@ export class Container extends EventEmitter implements IContainer {
     private injectModule(name : string, modulePath : string) : Container {
         try {
             let moduleConfig : (IConfigObj|undefined);
-            let moduleClass : IConstructible<IModule>;
-            const loadedModule : (IConstructible<IModule> | IESModule<IModule>) = require(join(this.baseDir, modulePath));      //tslint:disable-line
+            let moduleClass : IConstructibleModule<IModule>;
+            const loadedModule : (IConstructibleModule<IModule> | ITsCoreESModule<IModule>) = require(join(this.baseDir, modulePath));      //tslint:disable-line
 
             if (loadedModule.hasOwnProperty('__esModule')) {
-                moduleClass = (<IESModule<IModule>>loadedModule).default;
+                moduleClass = (<ITsCoreESModule<IModule>>loadedModule).default;
             } else {
-                moduleClass = <IConstructible<IModule>>loadedModule;
+                moduleClass = <IConstructibleModule<IModule>>loadedModule;
             }
 
             if (Boolean(this.configObj) && this.configObj.hasOwnProperty(name)) {

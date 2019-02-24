@@ -1,7 +1,10 @@
 import { join } from 'path';
-import { IConfigLoader, IConfigObj } from '../..';
 import { Container } from '../../..';
-import { ILocalConfigLoaderOptions } from './types';
+import {
+    IConfigLoader,
+    IConfigObj,
+    ILocalConfigLoaderOptions
+} from '../../../types';
 
 /**
  * Load local JS file as application configuration

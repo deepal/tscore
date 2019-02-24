@@ -1,10 +1,9 @@
-import { IConfigObj } from '../configLoader';
-import { IContainer } from '../container';
-import { ILogger } from '../logger';
-
-export interface IModule {
-    init() : void;
-}
+import {
+    IConfigObj,
+    IContainer,
+    ILogger,
+    IModule
+} from '../types';
 
 /**
  * Module class

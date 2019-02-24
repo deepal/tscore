@@ -6,61 +6,19 @@ import * as helmet from 'helmet';
 import * as http from 'http';
 import * as https from 'https';
 import { v4 as uuidV4 } from 'uuid';
+import {
+    IAppLocals,
+    IHTTPSConfig,
+    IListnerConfig,
+    IMiddleware,
+    IResponseLocals,
+    IRouteConfig,
+    IServerConfig,
+    IServerHeadersConfig
+} from '../types';
 
 const DEFAULT_HOST : string = '0.0.0.0';
 const DEFAULT_PORT : number = 8080;
-
-export interface IHTTPSConfig {
-    key: string;
-    cert: string;
-}
-
-export interface IListnerConfig {
-    host?: string;
-    port?: number;
-    secure?: boolean;
-}
-
-export type IMiddleware = (req: express.Request, res: express.Response, next?: Function) => void;
-
-export interface IServerHeadersConfig {
-    noCache?: boolean;
-    frameGuard?: boolean;
-    xssFilter?: boolean;
-    maskPoweredBy?: boolean;
-}
-
-export interface IServerConfig extends IListnerConfig {
-    basicAuthParser?: boolean;
-    jsonBodyParser?: boolean;
-    secureHeaders?: IServerHeadersConfig;
-    httpsConfig? : IHTTPSConfig;
-}
-
-export interface IRouteConfig {
-    method?: string;
-    path: string;
-    handler: IMiddleware;
-}
-
-export interface IBasicAuthInfo {
-    username: string;
-    password: string;
-}
-
-export interface IAppLocals {
-    appId: string;
-}
-
-export interface IResponseLocals {
-    auth: {
-        header: string;
-        username: string;
-        password: string;
-    };
-}
-
-export type IEventListener = (...args: any[]) => void;      //tslint:disable-line
 
 type EventEmitterCallback = typeof EventEmitter.prototype.emit;
 

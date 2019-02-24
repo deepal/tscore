@@ -1,33 +1,20 @@
 import { readFile } from 'fs';
 import { join } from 'path';
 import { promisify } from 'util';
-import { IConfigLoader } from '../configLoader';
 import { Container } from '../container';
-import { ILoggerConfig } from '../logger';
-
-export interface IModuleDescription {
-    name: string;
-    path: string;
-}
-
-export interface ILauncherConfig {
-    name: string;
-    baseDir?: string;
-    loggerConfig?: ILoggerConfig;
-}
-
-export interface IApplicationConfig extends ILauncherConfig {
-    name: string;
-    baseDir: string;
-    configLoader?: IConfigLoader;
-    moduleDescription: IModuleDescription[];
-    loggerConfig: ILoggerConfig;
-}
+import {
+    IApplicationConfig,
+    IConfigLoader,
+    ILauncher,
+    ILauncherConfig,
+    ILoggerConfig,
+    IModuleDescription
+} from '../types';
 
 /**
  * Application launcher
  */
-export class Launcher {
+export class Launcher implements ILauncher {
     private readonly container : Container;
     private readonly applicationConfig : IApplicationConfig;
     private readonly defaultApplicationConfig : IApplicationConfig;

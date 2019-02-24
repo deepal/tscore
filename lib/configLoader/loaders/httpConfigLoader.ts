@@ -1,7 +1,7 @@
 
 import * as request from 'request';
 import { promisify } from 'util';
-import { IConfigLoader, IConfigObj } from '..';
+import { IConfigLoader, IConfigObj } from '../../types';
 
 export interface IHTTPConfigLoaderOptions {
     url: string;

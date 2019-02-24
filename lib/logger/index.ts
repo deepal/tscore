@@ -1,24 +1,10 @@
 import * as bunyan from 'bunyan';
-import { IncomingMessage, OutgoingMessage } from 'http';
-
-export interface ILoggerConfig {
-    name: string;
-    level?: bunyan.LogLevel;
-    filePath?: string;
-}
-
-export type LogFunction = (...message : (string[] | Error[] | IncomingMessage[] | OutgoingMessage[])) => void;
-export type CreateChildLoggerFunction = (options: Object, simple?: boolean | undefined) => ILogger;
-
-export interface ILogger {
-    trace: LogFunction;
-    debug: LogFunction;
-    info: LogFunction;
-    warn: LogFunction;
-    error: LogFunction;
-    fatal: LogFunction;
-    child?: CreateChildLoggerFunction;
-}
+import {
+    CreateChildLoggerFunction,
+    ILogger,
+    ILoggerConfig,
+    LogFunction
+} from '../types';
 
 /**
  * Logging module

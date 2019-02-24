@@ -1,24 +1,17 @@
 import * as ConfigLoader from './configLoader';
 import * as Constants from './constants';
 import { Container } from './container';
-import {
-    IApplicationConfig as ApplicationConfig,
-    IModuleDescription as ModuleDescription,
-    Launcher
-} from './launcher';
-import { ILoggerConfig as LoggerConfig, Logger } from './logger';
-import { IModule as Module } from './module';
+import { Launcher } from './launcher';
+import { Logger } from './logger';
 import { Server } from './server';
+import * as Types from './types';
 
 export {
     Container,
-    ApplicationConfig,
-    ModuleDescription,
-    Module,
-    LoggerConfig,
     Logger,
     Server,
     Launcher,
     Constants,
-    ConfigLoader
+    ConfigLoader,
+    Types
 };
