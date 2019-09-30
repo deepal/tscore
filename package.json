@@ -47,7 +47,7 @@
     "body-parser": "1.18.3",
     "bunyan": "1.8.12",
     "express": "4.16.4",
-    "helmet": "3.15.1",
+    "helmet": "3.21.1",
     "pre-commit": "1.2.2",
     "request": "2.88.0",
     "typescript": "3.3.3333",
