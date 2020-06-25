@@ -45,7 +45,7 @@
     "@types/request": "2.48.1",
     "@types/uuid": "3.4.4",
     "body-parser": "1.18.3",
-    "bunyan": "1.8.12",
+    "bunyan": "1.8.13",
     "express": "4.16.4",
     "helmet": "3.15.1",
     "pre-commit": "1.2.2",
